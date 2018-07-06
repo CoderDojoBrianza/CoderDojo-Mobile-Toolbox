@@ -1,0 +1,50 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% block title %}Tutorial{% endblock %}
+
+{% block page_styles %}
+<style>
+
+	div.tutorial    {  padding:10px; }
+
+	div.description    { padding-left:10px; display: inline-block; }
+	sprite img {margin:10px;}
+</style>
+{% endblock page_styles%}
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>Tutorial</h1>
+	</div>
+
+
+			{% if projects %}
+				{% for project in projects %}
+	<a href="{% url 'coderdojomobile:tutorial' project.id %}">
+		<div class="row tutorial">
+			<div class="col-md-4">
+				<img src="{% static 'toolbox/'|add:project.screenshot.file_path %}" class="img-responsive center-block" style="width: 100% \9;" alt="{{category.category_name}}" />
+			</div>
+			<div class="col-md-8">
+
+				<h2 class="text-left">{{project.title}}</h2>
+
+				<p class="text-left" >{{project.description}}</p>
+
+			</div>
+		</div>
+	</a>
+				{% endfor %}
+
+			{% else %}
+	<p>Nessun Tutorial Disponibile</p>
+			{% endif %}
+
+</div>
+
+
+{% endblock content %}

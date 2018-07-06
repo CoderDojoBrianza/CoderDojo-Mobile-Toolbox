@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="author" content="CoderDojo Lissone">
+  <link rel="icon" href="{% static 'toolbox/custom-brand/favicon.ico' %}" />
+  <title>{% block title %}{% endblock %}</title>
+  <!--<link rel="stylesheet" href="{% static 'toolbox/css/main1.css' %}"/>-->
+
+    <!-- Bootstrap -->
+    <link href="{% static 'toolbox/libraries/bootstrap-3/css/bootstrap.min.css' %} " rel="stylesheet">
+
+	<!-- Jumbotron -->
+	<link href="{% static 'toolbox/css/jumbotron.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="{% static 'toolbox/libraries/html5shiv.min.js' %}"></script>
+      <script src="{% static 'toolbox/libraries/respond.min.js' %}"></script>
+
+    <![endif]-->
+
+		{% block page_styles %}{% endblock page_styles%}
+
+  </head>
+	
+  <body id="sfondo">
+
+<!------>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"/>
+				<span class="icon-bar"/>
+				<span class="icon-bar"/>
+			</button>
+			<a class="navbar-brand" href="{% url 'coderdojomobile:index' %}">CoderDojo Mobile Toolkit</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="{% url 'coderdojomobile:tutorials' %}">Guide</a>
+				</li>
+				<li>
+					<a href="{% url 'coderdojomobile:soft' %}">Programmi</a>
+				</li>
+				<li>
+					<a href="{% url 'coderdojomobile:sprites' %}">Sprites</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+	{% block content %}{% endblock %}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'toolbox/libraries/jquery-3.3.1.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'toolbox/libraries/bootstrap-3/js/bootstrap.min.js' %}"></script>
+</html>
