@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+/static/toolbox/softwareDojo
+/static/toolbox/Sprite
+/static/toolbox/libraries
+/static/toolbox/tutorial

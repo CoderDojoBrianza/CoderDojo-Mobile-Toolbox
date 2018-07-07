@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import views_tutorial
 
 app_name = 'coderdojomobile'
 urlpatterns = [
@@ -16,9 +17,10 @@ urlpatterns = [
 	path('soft/', views.softwareDojo, name='soft'),
 	path('sprites/', views.sprites, name='sprites'),
 	path('spritesAlieni/', views.spritesAlieni, name='spritesAlieni'),
-	path('tutorials/', views.tutorials, name='tutorials'),
-	path('tutorial/<int:tutorial_id>', views.tutorial, name='tutorial'),
+	path('tutorials/', views_tutorial.tutorials, name='tutorials'),
+	path('tutorial/<int:tutorial_id>', views_tutorial.tutorial, name='tutorial'),
 	path('spriteCategory/<int:category_id>/', views.spriteCategory, name='spriteCategory'),
+    path('thanks_tutorial/', views_tutorial.thanks, name='thanks'),
     
 # views non funzionali per il progetto ma solo per prova
     path('lista/', views.lista, name='lista'),

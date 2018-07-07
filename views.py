@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from .forms import TutorialUploadForm
+from django.http import HttpResponseRedirect
 from . models import *
 import os
 import unicodedata
+
+
 toggle='-'
 
 def index(request):     # Home page
@@ -144,16 +148,6 @@ def spriteCategory(request, category_id):
 	}
 	return render(request, 'coderdojomobile/spritesInCategory.html', context)
 
-def tutorials(request):
-    projects=DojoProject.objects.all().order_by('title')
-    context = {'projects': projects}
-    return render(request, "coderdojomobile/tutorials.html", context)
-
-def tutorial(request, tutorial_id):
-    tutorial=DojoProject.objects.get(id=tutorial_id)
-    context = {'project': tutorial,
-				'project_resources' : tutorial.resources.all()}
-    return render(request, "coderdojomobile/tutorial.html", context)
 
 #----------------------------------------------------------------------------------------
 # Function usate per prova

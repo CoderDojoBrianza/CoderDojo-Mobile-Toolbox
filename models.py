@@ -63,8 +63,7 @@ class SpriteImages(models.Model):
 
 class GenericUserFile(models.Model):
 	title = models.CharField(max_length=200)
-	description = models.CharField(max_length=1500)
-	file_path = models.CharField(max_length=200)
+	file = models.FileField(max_length=200)
 
 
 class DojoProject(models.Model):

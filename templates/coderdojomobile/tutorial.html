@@ -19,17 +19,17 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2 class="text-center">{{project.title}}</h2>
-			<img src="{% static 'toolbox/'|add:project.screenshot.file_path %}" class="img-responsive center-block" style="width:400px" alt="{{category.category_name}}" />
+			<img src="{{project.screenshot.file.url }}" class="img-responsive center-block" style="width:400px" alt="{{category.category_name}}" />
 
 			<p class="text-center" >{{project.description}}</p>
-			<h2 class="text-left" ><a href="{% static 'toolbox/'|add:project.tutorial.file_path %}">Tutorial</a></h2>
+			<h2 class="text-left" ><a href="{{project.tutorial.file.url }}">Tutorial</a></h2>
 		</a>
 
 
 		<h2 class="text-left" >Risorse</h2>
 <ul>
 				{% for project_resource in project_resources %}
-		<li><a href="{% static 'toolbox/'|add:project_resource.file_path %}">{{project_resource.title}}</a></li>
+		<li><a href="{{project_resource.file.url }}">{{project_resource.title}}</a></li>
 				{% endfor %}
 </ul>
 	</div>

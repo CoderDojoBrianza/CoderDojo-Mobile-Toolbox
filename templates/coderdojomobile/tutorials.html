@@ -27,7 +27,8 @@
 	<a href="{% url 'coderdojomobile:tutorial' project.id %}">
 		<div class="row tutorial">
 			<div class="col-md-4">
-				<img src="{% static 'toolbox/'|add:project.screenshot.file_path %}" class="img-responsive center-block" style="width: 100% \9;" alt="{{category.category_name}}" />
+                {# We are serving from media files, so we use the url property of the file #}
+				<img src="{{project.screenshot.file.url }}" class="img-responsive center-block" style="width: 100% \9;" alt="{{category.category_name}}" />
 			</div>
 			<div class="col-md-8">
 
@@ -44,6 +45,23 @@
 	<p>Nessun Tutorial Disponibile</p>
 			{% endif %}
 
+<p>Upload a Tutorial</p>
+
+    <form action="{% url 'coderdojomobile:tutorials' %}" method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                     {% for field in form.visible_fields %}
+                    <div class="row tutorial"> 
+                      <div class="col-md-12">
+                        {{ field.label_tag }}
+
+                          {{ field.errors }}
+                          {{ field }}
+                          {{ field.help_text }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="Submit" />
+    </form>
 </div>
 
 
