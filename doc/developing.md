@@ -10,3 +10,8 @@ Some tools you might want to use:
 - Viewing markdown files: [Markdown Viewer extension for Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk)
 - Working with GitHub in Windows: [TortoiseGit](https://tortoisegit.org/)
 - Working with the database: [DB Browser for sqlite](https://sqlitebrowser.org/)
+
+
+## Documentation 
+
+For correctly managing Markdown lists / code blocks, see [This Gist](https://gist.github.com/clintel/1155906#file-gistfile1-md)

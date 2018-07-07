@@ -83,17 +83,17 @@ Steps:
 1. to make media files work also in `DEBUG` mode, during development, add these lines to the `urls.py` of your **project** (not to the app's one):
     1. Beginning of the file:
 
-    ```
-        from . import settings
-        from django.conf.urls.static import static
-    ```
+        ```
+            from . import settings
+            from django.conf.urls.static import static
+        ```
 
     1. at the end:
 
-    ```
-        if settings.DEBUG:
-            urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    ```
+        ```
+            if settings.DEBUG:
+                urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        ```
 
 1. Create a `toolbox/libraries` folder inside the `coderdojomobile` folder
 1. Download dependencies:
