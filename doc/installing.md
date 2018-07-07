@@ -36,7 +36,7 @@ Steps:
 
 1. [Create a Django project](https://docs.djangoproject.com/en/2.0/intro/tutorial01/#creating-a-project) 
 1. Configure `settings.py`:
-    1. add the app to the installed apps:
+  1. add the app to the installed apps:
 ```
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -47,13 +47,13 @@ Steps:
         'django.contrib.staticfiles',
         'django.contrib.admindocs',
         'coderdojomobile.apps.CoderDojoMobileAppConfig', #configure the app
-]
+    ]
 ```
-    1. set the allowed urls:
+  1. set the allowed urls:
 ```
     ALLOWED_HOSTS = ["localhost","coderdojomobile","127.0.0.1"]
 ```
-    1. configure static file settings. See also [Installing Django on Apache - Mod WSGI](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-debian-8) for explanation on the static files configuration
+  1. configure static file settings. See also [Installing Django on Apache - Mod WSGI](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-debian-8) for explanation on the static files configuration
 ```
 
     # Static files (CSS, JavaScript, Images)
@@ -67,18 +67,18 @@ Steps:
 
     STATIC_ROOT="/home/pi/Documents/CDLSMBTK3/MYSTATIC" #Customize this with your static folder on the filesystem
 ```
-    1. set MEDIA_URL and MEDIA_ROOT in your project’s `settings.py` (example, set to the correct media folder):
+  1. set MEDIA_URL and MEDIA_ROOT in your project’s `settings.py` (example, set to the correct media folder):
 ```
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/example.com/media/'
 ```
 1. to make media files work also in `DEBUG` mode, during development, add these lines to the `urls.py` of your **project** (not to the app's one):
-    1. Beginning of the file:
+  1. Beginning of the file:
 ```
     from . import settings
     from django.conf.urls.static import static
 ```
-    1. at the end:
+  1. at the end:
 ```
     if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
