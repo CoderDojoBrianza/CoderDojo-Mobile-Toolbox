@@ -38,47 +38,47 @@ Steps:
 1. Configure `settings.py`:
     1. add the app to the installed apps:
 
-    ```
-        INSTALLED_APPS = [
-            'django.contrib.admin',
-            'django.contrib.auth',
-            'django.contrib.contenttypes',
-            'django.contrib.sessions',
-            'django.contrib.messages',
-            'django.contrib.staticfiles',
-            'django.contrib.admindocs',
-            'coderdojomobile.apps.CoderDojoMobileAppConfig', #configure the app
-        ]
-    ```
+        ```
+            INSTALLED_APPS = [
+                'django.contrib.admin',
+                'django.contrib.auth',
+                'django.contrib.contenttypes',
+                'django.contrib.sessions',
+                'django.contrib.messages',
+                'django.contrib.staticfiles',
+                'django.contrib.admindocs',
+                'coderdojomobile.apps.CoderDojoMobileAppConfig', #configure the app
+            ]
+        ```
 
     1. set the allowed urls:
 
-    ```
-        ALLOWED_HOSTS = ["localhost","coderdojomobile","127.0.0.1"]
-    ```
+        ```
+            ALLOWED_HOSTS = ["localhost","coderdojomobile","127.0.0.1"]
+        ```
 
     1. configure static file settings. See also [Installing Django on Apache - Mod WSGI](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-debian-8) for explanation on the static files configuration
 
-    ```
+        ```
 
-        # Static files (CSS, JavaScript, Images)
-        # https://docs.djangoproject.com/en/2.0/howto/static-files/
+            # Static files (CSS, JavaScript, Images)
+            # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-        STATIC_URL = '/static/'
+            STATIC_URL = '/static/'
 
-        STATICFILES_DIRS = [
-            os.path.join(BASE_DIR, "coderdojomobile/static"),
-        ]
+            STATICFILES_DIRS = [
+                os.path.join(BASE_DIR, "coderdojomobile/static"),
+            ]
 
-        STATIC_ROOT="/home/pi/Documents/CDLSMBTK3/MYSTATIC" #Customize this with your static folder on the filesystem
-    ```
+            STATIC_ROOT="/home/pi/Documents/CDLSMBTK3/MYSTATIC" #Customize this with your static folder on the filesystem
+        ```
 
     1. set MEDIA_URL and MEDIA_ROOT in your project’s `settings.py` (example, set to the correct media folder):
 
-    ```
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = '/var/www/example.com/media/'
-    ```
+        ```
+        MEDIA_URL = '/media/'
+        MEDIA_ROOT = '/var/www/example.com/media/'
+        ```
 
 1. to make media files work also in `DEBUG` mode, during development, add these lines to the `urls.py` of your **project** (not to the app's one):
     1. Beginning of the file:
