@@ -6,11 +6,12 @@ This is a summary of installation steps, with references to other tutorials / gu
 
 - Python3
 - Django
-- A web server (e.g. Apache)
 - Jquery 3.3.1
 - Bootstrap3
 - HTML5 shiv
 - Respond.js
+
+For production use we strongly reccommend using a web server (e.g. Apache)
 
 ## Steps
 
