@@ -47,7 +47,7 @@
 
 <p>Upload a Tutorial</p>
 
-    <form action="{% url 'coderdojomobile:tutorials' %}" method="post"  enctype="multipart/form-data">
+    <form action="{% url 'coderdojomobile:tutorials' 1 %}" method="post"  enctype="multipart/form-data">
                     {% csrf_token %}
                      {% for field in form.visible_fields %}
                     <div class="row tutorial"> 

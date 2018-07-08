@@ -148,6 +148,13 @@ def spriteCategory(request, category_id):
 	}
 	return render(request, 'coderdojomobile/spritesInCategory.html', context)
 
+def learningTopics(request):
+	learning_topics = LearningTopic.objects.order_by('title')
+	context = {
+		'learning_topics': learning_topics
+	}
+	return render(request, 'coderdojomobile/learningTopics.html', context)
+
 
 #----------------------------------------------------------------------------------------
 # Function usate per prova

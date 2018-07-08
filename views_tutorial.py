@@ -67,7 +67,7 @@ def handle_uploaded_file(uploaded,description):
         
     return files
 
-def tutorials(request):
+def tutorials(request,topic_id):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -78,11 +78,11 @@ def tutorials(request):
             return HttpResponseRedirect('/coderdojomobile/thanks_tutorial')
     # if a GET (or any other method) we'll create a blank form
     else:
-        projects=LearningMaterial.objects.all().order_by('title')
+        projects=LearningMaterial.objects.all().filter(topic_id=topic_id).order_by('title')
         form = TutorialUploadForm()
         context = {'projects': projects, 
                     'form' : form}
-        return render(request, "coderdojomobile/tutorials.html", context)
+        return render(request, 'coderdojomobile/tutorials.html', context)
 
 def tutorial(request, tutorial_id):
     tutorial=LearningMaterial.objects.get(id=tutorial_id)

@@ -66,10 +66,17 @@ class GenericUserFile(models.Model):
 	file = models.FileField(max_length=200)
 
 
-class LearningMaterial(models.Model):
+class LearningTopic(models.Model):
 	title = models.CharField(max_length=200)
 	description = models.CharField(max_length=1500)
-	tutorial = models.OneToOneField(GenericUserFile, on_delete=models.CASCADE, related_name='+', null=True)
-	resources = models.ManyToManyField(GenericUserFile, related_name='+')
-	screenshot = models.OneToOneField(GenericUserFile, on_delete=models.DO_NOTHING, related_name='+', null=True)
+	screenshot = models.FileField(max_length=200, upload_to="learningtopic/")
+
+class LearningMaterial(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=1500)
+    tutorial = models.OneToOneField(GenericUserFile, on_delete=models.CASCADE, related_name='+', null=True)
+    resources = models.ManyToManyField(GenericUserFile, related_name='+')
+    screenshot = models.OneToOneField(GenericUserFile, on_delete=models.DO_NOTHING, related_name='+', null=True)
+    topic = models.ForeignKey(LearningTopic,on_delete=models.DO_NOTHING,null=True)
+
 	
