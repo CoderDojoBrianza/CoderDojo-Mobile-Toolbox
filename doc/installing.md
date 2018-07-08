@@ -35,8 +35,23 @@ Optionally, if you want a fully autonomous Raspberry PI box (wireless access poi
 
 Steps:
 
-1. [Create a Django project](https://docs.djangoproject.com/en/2.0/intro/tutorial01/#creating-a-project) 
-1. Configure `settings.py`:
+1. [Create a Django project](https://docs.djangoproject.com/en/2.0/intro/tutorial01/#creating-a-project), with any name you want. If you want to follow the instructions more easily, call it `toolbox`.
+1. Download / Clone the Git repository to a `coderdojomobile` folder inside the project one. Supposing your project name is `toolbox`, the structure should look like this:
+
+    ```
+        toolbox
+        │
+        └─── coderdojomobile <- clone it here
+        │    └─── .git
+        │    └─── doc
+        │    └─── migrations
+        │    └─── ... etc etc ...
+        └─── toolbox
+        └─── db.sqlite3
+        └─── manage.py
+    ```
+
+1. Configure `settings.py` in the `toolbox` folder:
     1. add the app to the installed apps:
 
         ```
@@ -81,7 +96,17 @@ Steps:
         MEDIA_ROOT = '/var/www/example.com/media/'
         ```
 
-1. to make media files work also in `DEBUG` mode, during development, add these lines to the `urls.py` of your **project** (not to the app's one):
+1. Add the application to the `urlpatterns` in the `toolbox/urls.py` file:
+
+    ```
+    urlpatterns = [
+        path('coderdojomobile/', include('coderdojomobile.urls')),
+        path('admin/doc', include('django.contrib.admindocs.urls')),
+        path('admin/', admin.site.urls),
+    ] 
+    ```
+
+1. to make media files work also in `DEBUG` mode, during development, add these lines to the `toolbox/urls.py` file:
     1. Beginning of the file:
 
         ```
@@ -103,29 +128,43 @@ Steps:
 	1. [HTML5shiv](https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js) : put the  `html5shiv.min.js` file in the `toolbox/libraries` folder
 	1. [RespondJs](https://oss.maxcdn.com/respond/1.4.2/respond.min.js) : put the `respond.min.js` file in the `toolbox/libraries` folder
 
-1. Check folder structure: The `toolbox/libraries` folder should look like this:
+1. Check folder structure: The `coderdojomobile/toolbox/libraries` folder should look like this:
 
     ```
-        toolbox/libraries
-        │
-        └───bootstrap-3
-        │   └───css
-        │   └───font
-        │   └───js
-        │   html5shiv.min.js
-        │   jquery-3.3.1.min.js
-        │   jumbotron.css
-        │   respond.min.js
+            coderdojomobile/toolbox/libraries
+            │
+            └─── bootstrap-3
+            │   └─── css
+            │   └─── font
+            │   └─── js
+            └─── html5shiv.min.js
+            └─── jquery-3.3.1.min.js
+            └─── jumbotron.css
+            └─── respond.min.js
     ```
 
 1. Initialize the DB with the `./manage.py migrate` command
-1. Collect static files with the `./manage.py collectstatic` command
 
-### Customize the app
+
+### Running the app
+
+You can run the app using the embedded webserver provided by Django:
+
+```
+python manage.py runserver
+```
+
+In production, you'll have to start Apache. Refer to your system's guides for this step. When using an external web server, remember to collect static files:
+
+``` 
+python manage.py collectstatic 
+```
+
+### Customizing the app
 
 You can customize logos and images to match those of your Dojo.
 
-All customizable files are in the `\toolbox\custom-brand` folder:
+All customizable files are in the `static\toolbox\custom-brand` folder:
 
 - The `favicon` file 
 
