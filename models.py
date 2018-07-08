@@ -66,7 +66,7 @@ class GenericUserFile(models.Model):
 	file = models.FileField(max_length=200)
 
 
-class DojoProject(models.Model):
+class LearningMaterial(models.Model):
 	title = models.CharField(max_length=200)
 	description = models.CharField(max_length=1500)
 	tutorial = models.OneToOneField(GenericUserFile, on_delete=models.CASCADE, related_name='+', null=True)

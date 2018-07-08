@@ -53,14 +53,14 @@ def handle_uploaded_file(uploaded,description):
                     resource_entity.file.field.upload_to="tutorial/"
                     resource_entity.save()
         # Now save the tutorial
-        dojoProject = DojoProject()
-        dojoProject.title = project_name
-        dojoProject.description = description       
-        dojoProject.tutorial = tutorial_entity
-        dojoProject.screenshot = screenshot_entity
-        dojoProject.save()
-        dojoProject.resources.add(resource_entity)
-        dojoProject.save()
+        learningMaterial = LearningMaterial()
+        learningMaterial.title = project_name
+        learningMaterial.description = description       
+        learningMaterial.tutorial = tutorial_entity
+        learningMaterial.screenshot = screenshot_entity
+        learningMaterial.save()
+        learningMaterial.resources.add(resource_entity)
+        learningMaterial.save()
         # For now just save the file to GenericUserFiles
         #g = GenericUserFile(title="tutorial.pdf", file = pdfFile)
         #g.save()
@@ -78,14 +78,14 @@ def tutorials(request):
             return HttpResponseRedirect('/coderdojomobile/thanks_tutorial')
     # if a GET (or any other method) we'll create a blank form
     else:
-        projects=DojoProject.objects.all().order_by('title')
+        projects=LearningMaterial.objects.all().order_by('title')
         form = TutorialUploadForm()
         context = {'projects': projects, 
                     'form' : form}
         return render(request, "coderdojomobile/tutorials.html", context)
 
 def tutorial(request, tutorial_id):
-    tutorial=DojoProject.objects.get(id=tutorial_id)
+    tutorial=LearningMaterial.objects.get(id=tutorial_id)
     context = {'project': tutorial,
                 'project_resources' : tutorial.resources.all()}
     return render(request, "coderdojomobile/tutorial.html", context)

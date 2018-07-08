@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='DojoProject',
+            name='LearningMaterial',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200)),
@@ -104,17 +104,17 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AddField(
-            model_name='dojoproject',
+            model_name='learningmaterial',
             name='resources',
-            field=models.ManyToManyField(related_name='_dojoproject_resources_+', to='coderdojomobile.GenericUserFile'),
+            field=models.ManyToManyField(related_name='_learningmaterial_resources_+', to='coderdojomobile.GenericUserFile'),
         ),
         migrations.AddField(
-            model_name='dojoproject',
+            model_name='learningmaterial',
             name='screenshot',
             field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='+', to='coderdojomobile.GenericUserFile'),
         ),
         migrations.AddField(
-            model_name='dojoproject',
+            model_name='learningmaterial',
             name='tutorial',
             field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='coderdojomobile.GenericUserFile'),
         ),

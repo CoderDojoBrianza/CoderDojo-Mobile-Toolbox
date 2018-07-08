@@ -22,4 +22,4 @@ admin.site.register(SpriteImages)
 
 admin.site.register(GenericUserFile)
 
-admin.site.register(DojoProject)
+admin.site.register(LearningMaterial)
