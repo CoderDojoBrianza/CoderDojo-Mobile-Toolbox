@@ -10,10 +10,12 @@ from . models import *
 import os
 import unicodedata
 import zipfile
+from . views import base_function
 
 
 def thanks(request):
-    context = {'tutorial_name':"tutorial.pdf", 'tutorial_screenshot':"screenshot.png", 'tutorial_resources':"resources.zip"}
+    context = base_function(request)
+    context.update({'tutorial_name':"tutorial.pdf", 'tutorial_screenshot':"screenshot.png", 'tutorial_resources':"resources.zip"})
     return render(request, "coderdojomobile/thanks_tutorial.html", context)
 
 def handle_uploaded_file(uploaded,description):
@@ -68,6 +70,7 @@ def handle_uploaded_file(uploaded,description):
     return files
 
 def tutorials(request,topic_id):
+    context = base_function(request)
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -80,14 +83,15 @@ def tutorials(request,topic_id):
     else:
         projects=LearningMaterial.objects.all().filter(topic_id=topic_id).order_by('title')
         form = TutorialUploadForm()
-        context = {'projects': projects, 
-                    'form' : form}
+        context.update({'projects': projects, 
+                    'form' : form})
         return render(request, 'coderdojomobile/tutorials.html', context)
 
 def tutorial(request, tutorial_id):
+    context = base_function(request)
     tutorial=LearningMaterial.objects.get(id=tutorial_id)
-    context = {'project': tutorial,
-                'project_resources' : tutorial.resources.all()}
+    context.update({'project': tutorial,
+                'project_resources' : tutorial.resources.all()})
     return render(request, "coderdojomobile/tutorial.html", context)
 
 

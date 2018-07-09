@@ -10,8 +10,16 @@ import unicodedata
 
 toggle='-'
 
+def base_function(request):
+    if request.user.id is not None:
+        user = request.user.get_username()
+    else:
+        user = None
+    context = {"user":user}
+    return context
+
 def index(request):     # Home page
-    context = {0:0}
+    context = base_function(request)
     return render(request, "coderdojomobile/index.html", context)
 
 def scratch(request,liv):
@@ -121,39 +129,44 @@ def nonraggiungibile(request):
     return HttpResponse("<h2>Sito non raggiungibile. Accesso a internet inesistente")
 
 def softwareDojo(request):
-    return render(request, "coderdojomobile/softwareDojo.html")
+    context = base_function(request)
+    return render(request, "coderdojomobile/softwareDojo.html",context)
 
 # Usiamo le categorie definite a db
 def sprites(request):
-	sprite_categories = SpriteCategory.objects.order_by('sprite_category_name')
-	context = {
-		'sprite_categories': sprite_categories
-	}
-	return render(request, 'coderdojomobile/sprites.html', context)
+    context = base_function(request)
+    sprite_categories = SpriteCategory.objects.order_by('sprite_category_name')
+    context.update({
+        'sprite_categories': sprite_categories
+    })
+    return render(request, 'coderdojomobile/sprites.html', context)
 
 def spritesAlieni(request):
-    return render(request, "spritesAlieni.html")
+    context = base_function(request)
+    return render(request, "spritesAlieni.html",context)
 
 def spriteCategory(request, category_id):
-	sprites = Sprite.objects.order_by('sprite_name').filter(spritecategory__id=category_id)
-	sprite_images = SpriteImages.objects.all().filter(sprite__in=sprites).order_by('image_order')
-	for sprite in sprites:
-		sprite.imgs = []
-		for image in sprite_images:
-			if image.sprite.id == sprite.id:
-				sprite.imgs.append(image)
-	context = {
-		'sprites': sprites,
-		'sprite_images' : sprite_images
-	}
-	return render(request, 'coderdojomobile/spritesInCategory.html', context)
+    context = base_function(request)
+    sprites = Sprite.objects.order_by('sprite_name').filter(spritecategory__id=category_id)
+    sprite_images = SpriteImages.objects.all().filter(sprite__in=sprites).order_by('image_order')
+    for sprite in sprites:
+        sprite.imgs = []
+        for image in sprite_images:
+            if image.sprite.id == sprite.id:
+                sprite.imgs.append(image)
+    context.update({
+        'sprites': sprites,
+        'sprite_images' : sprite_images
+    })
+    return render(request, 'coderdojomobile/spritesInCategory.html', context)
 
 def learningTopics(request):
-	learning_topics = LearningTopic.objects.order_by('title')
-	context = {
-		'learning_topics': learning_topics
-	}
-	return render(request, 'coderdojomobile/learningTopics.html', context)
+    context = base_function(request)
+    learning_topics = LearningTopic.objects.order_by('title')
+    context.update({
+        'learning_topics': learning_topics
+    })
+    return render(request, 'coderdojomobile/learningTopics.html', context)
 
 
 #----------------------------------------------------------------------------------------

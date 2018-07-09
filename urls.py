@@ -1,10 +1,12 @@
 from django.urls import path
 from . import views
 from . import views_tutorial
+from django.contrib.auth import views as auth_views
 
 app_name = 'coderdojomobile'
 urlpatterns = [
 	path('', views.index, name='index'),
+    path('index', views.index, name='index'),
 	path('scratch/<str:liv>/', views.scratch, name='scratch'),
 	path('python/<str:liv>/', views.python, name='python'),
 	path('html/<str:liv>/', views.html, name='html'),
@@ -22,6 +24,8 @@ urlpatterns = [
 	path('spriteCategory/<int:category_id>/', views.spriteCategory, name='spriteCategory'),
     path('thanks_tutorial/', views_tutorial.thanks, name='thanks'),
     path('learningTopics/', views.learningTopics, name='learningTopics'),
+    path('login/', auth_views.LoginView.as_view(template_name='coderdojomobile/login.html'),name="login"),
+    path('logout/', auth_views.LogoutView.as_view(next_page="/coderdojomobile/index"),name="logout"),
     
 # views non funzionali per il progetto ma solo per prova
     path('lista/', views.lista, name='lista'),

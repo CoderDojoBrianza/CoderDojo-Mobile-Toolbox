@@ -57,7 +57,22 @@
 					<a href="{% url 'coderdojomobile:sprites' %}">Sprites</a>
 				</li>
 			</ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">                    
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon icon="user" extra_classes="glyphicon-inverse" %}</span></a>
+                    <ul class="dropdown-menu">
+                        {% if user %}
+                        <li><a href="#">Hello, {{user}}</a></li>                        
+                        <li><a href="{%url 'coderdojomobile:logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{%url 'coderdojomobile:login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
 		</div>
+        
+            
 	</div>
 </nav>
 
