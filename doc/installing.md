@@ -19,7 +19,8 @@ Setting up CoderDojo mobile requires three major steps:
 
 - [Setting up the base system](#setting-up-the-base-system)
 - [Setting up the app](#setting-up-the-app)
-- [Customized the app](#customize-the-app)
+- [Creating content](#creating-content)
+- [Customizing the app](#customize-the-app)
 
 
 ### Setting up the base system 
@@ -27,7 +28,8 @@ Setting up CoderDojo mobile requires three major steps:
 Prepare the base system (see the [References](#references) section) :
 - install Python 3
 - install Django 
-- installing a web server
+- install [django-bootstrap-3](https://github.com/dyve/django-bootstrap3)
+- install a web server
 
 Optionally, if you want a fully autonomous Raspberry PI box (wireless access point, DNS, etc) you need to [configure hostapd and dnsmasq](https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md)
 
@@ -159,6 +161,9 @@ In production, you'll have to start Apache. Refer to your system's guides for th
 ``` 
 python manage.py collectstatic 
 ```
+### Creating content
+
+Of course, when you first run the app, it will be empty. To actually use it, you need to provide some content. Currently the app offers only very limited content upload capabilities, so you'll have to initialize database tables using the admin interface / a tool to modify database tables, like [DB Browser for sqlite](https://sqlitebrowser.org/)
 
 ### Customizing the app
 

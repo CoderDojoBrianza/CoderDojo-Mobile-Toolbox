@@ -1,6 +1,7 @@
 
 {% extends "coderdojomobile/base.html" %}
 {% load static %}
+{% load bootstrap3 %}
 {% block title %}Tutorial{% endblock %}
 
 {% block page_styles %}
@@ -47,20 +48,19 @@
 
 <p>Upload a Tutorial</p>
 
-    <form action="{% url 'coderdojomobile:tutorials' 1 %}" method="post"  enctype="multipart/form-data">
-                    {% csrf_token %}
-                     {% for field in form.visible_fields %}
-                    <div class="row tutorial"> 
-                      <div class="col-md-12">
-                        {{ field.label_tag }}
 
-                          {{ field.errors }}
-                          {{ field }}
-                          {{ field.help_text }}
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <input type="submit" value="Submit" />
+    
+    
+
+    <form action="{% url 'coderdojomobile:tutorials' 1 %}" method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% bootstrap_icon "star" %} Submit
+            </button>
+        {% endbuttons %}
+ 
     </form>
 </div>
 
