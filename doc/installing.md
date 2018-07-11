@@ -91,11 +91,35 @@ Steps:
             STATIC_ROOT="/home/pi/Documents/CDLSMBTK3/MYSTATIC" #Customize this with your static folder on the filesystem
         ```
 
-    1. set MEDIA_URL and MEDIA_ROOT in your project’s `settings.py` (example, set to the correct media folder):
+    1. set MEDIA_URL and MEDIA_ROOT (example, set to the correct media folder):
 
         ```
         MEDIA_URL = '/media/'
         MEDIA_ROOT = '/var/www/example.com/media/'
+        ```
+
+    1. activate localization:
+
+        ```
+        MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'django.middleware.locale.LocaleMiddleware' #localization
+        ]
+        ```
+
+    1. configure locale path:
+    
+        ```
+        LOCALE_PATHS = [
+            '/home/www/project/common_files/locale',
+            '/var/local/translations/locale', #examples, set your own
+        ]
         ```
 
 1. Add the application to the `urlpatterns` in the `toolbox/urls.py` file:

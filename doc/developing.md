@@ -10,7 +10,28 @@ Some tools you might want to use:
 - Viewing markdown files: [Markdown Viewer extension for Chrome](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk)
 - Working with GitHub in Windows: [TortoiseGit](https://tortoisegit.org/)
 - Working with the database: [DB Browser for sqlite](https://sqlitebrowser.org/)
+- To work with translations, use [Gettex for windows](https://mlocati.github.io/articles/gettext-iconv-windows.html)
 
+## Localization
+
+To generate locale files, run the `django-admin makemessages` command with the desired language:
+
+```
+django-admin makemessages -l en -e py,html
+django-admin makemessages -l it -e py,html
+```
+
+or, for all languages:
+
+```
+django-admin makemessages -a -e py,html
+```
+
+after providing actual translations, you have to compile message files:
+
+```
+django-admin compilemessages
+```
 
 ## Documentation 
 
