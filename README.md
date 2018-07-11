@@ -12,6 +12,8 @@ Currently the application is in an early development stage, but it has already b
 - Sprite gallery
 - Software repository (e.g. Scratch installer) 
 
+![homepage screenshot](doc/images/homepage_screenshot.png)
+
 ## Trying It
 
 Want to try it? Follow the [installation instructions](doc/installing.md) 
