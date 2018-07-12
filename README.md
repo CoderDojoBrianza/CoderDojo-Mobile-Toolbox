@@ -12,7 +12,9 @@ Currently the application is in an early development stage, but it has already b
 - Sprite gallery
 - Software repository (e.g. Scratch installer) 
 
-![homepage screenshot](doc/images/homepage_screenshot.png)
+<img src="doc/images/homepage_screenshot.png" style="margin:10px ; padding: 10px; border:1px solid #24292e; width:80%">
+<img src="doc/images/tutorial_screenshot.png" style="margin:10px ; padding: 10px; border:1px solid #24292e; width:80%">
+
 
 ## Trying It
 
@@ -22,8 +24,6 @@ Want to try it? Follow the [installation instructions](doc/installing.md)
 
 We plan to add more features in Q3 2018. Next features will probably be:
 
-- Authentication for Mentors
-- i18N
 - Event management with Ninja check-in, also via QR Code
 - Project Uploading, Rating, Commenting by Ninjas
 
