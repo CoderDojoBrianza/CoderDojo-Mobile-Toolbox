@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-11 22:58+0200\n"
+"POT-Creation-Date: 2018-07-12 23:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\coderdojomobile\forms.py:15
+msgid "LEVEL_ALL"
+msgstr "All"
+
+#: .\coderdojomobile\forms.py:16
+msgid "LEVEL_BEGINNER"
+msgstr "Beginner"
+
+#: .\coderdojomobile\forms.py:17
+msgid "LEVEL_INTERMEDIATE"
+msgstr "Intermediate"
+
+#: .\coderdojomobile\forms.py:18
+msgid "LEVEL_ADVANCED"
+msgstr "Advanced"
+
+#: .\coderdojomobile\forms.py:20
+msgid "Level"
+msgstr ""
 
 #: .\coderdojomobile\templates\coderdojomobile\base.html:52
 #: .\coderdojomobile\templates\coderdojomobile\index.html:24
@@ -44,12 +64,15 @@ msgstr "Hello, Ninja!"
 
 #: .\coderdojomobile\templates\coderdojomobile\index.html:14
 msgid "welcome_banner"
-msgstr "Welcome to the CoderDojo portable site! Here you can find useful tools / "
+msgstr ""
+"Welcome to the CoderDojo portable site! Here you can find useful tools / "
 "resources for the session"
 
 #: .\coderdojomobile\templates\coderdojomobile\index.html:25
 msgid "Guides_Long"
-msgstr "Guides, Tutorials, Sushi Cards and more. Lots of resources explaing how to create games, and more"
+msgstr ""
+"Guides, Tutorials, Sushi Cards and more. Lots of resources explaing how to "
+"create games, and more"
 
 #: .\coderdojomobile\templates\coderdojomobile\index.html:32
 msgid "Tools_Long"
@@ -58,3 +81,15 @@ msgstr "Software tools to create games and resources for games"
 #: .\coderdojomobile\templates\coderdojomobile\index.html:39
 msgid "Sprites_Long"
 msgstr "Lots of images you can use in your games!"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
+msgid "Tutorials"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
+msgid "search"
+msgstr "Search"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
+msgid "Upload"
+msgstr ""

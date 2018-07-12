@@ -2,6 +2,7 @@
 {% extends "coderdojomobile/base.html" %}
 {% load static %}
 {% load bootstrap3 %}
+{% load i18n %}
 {% block title %}Tutorial{% endblock %}
 
 {% block page_styles %}
@@ -19,9 +20,19 @@
 
 <div class="container">
 	<div class="page-header">
-		<h1>Tutorial</h1>
+		<h1>{% trans "Tutorials" %}</h1>
 	</div>
 
+        <form action="{% url 'coderdojomobile:tutorials' topic_id %}" method="get"  >
+        {% csrf_token %}
+        {% bootstrap_form search_form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "search" %}
+            </button>
+        {% endbuttons %}
+ 
+        </form>
 
 			{% if projects %}
 				{% for project in projects %}
@@ -32,9 +43,11 @@
 				<img src="{{project.screenshot.file.url }}" class="img-responsive center-block" style="width: 100% \9;" alt="{{category.category_name}}" />
 			</div>
 			<div class="col-md-8">
-
-				<h2 class="text-left">{{project.title}}</h2>
-
+                {% with project.level|stringformat:"s" as level_string %} {# need to format this as string otherwise concat fails#}
+                    {% with 'toolbox/images/level_'|add:level_string|add:'.svg' as image_static %}
+                        <h2 class="text-left"><img src="{% static image_static %}" alt="{{project.level}}"/> {{project.title}}</h2>
+                    {% endwith %}
+                {% endwith %}
 				<p class="text-left" >{{project.description}}</p>
 
 			</div>
@@ -57,7 +70,7 @@
         {% bootstrap_form form %}
         {% buttons %}
             <button type="submit" class="btn btn-primary">
-                {% bootstrap_icon "star" %} Submit
+                {% trans "Upload" %}
             </button>
         {% endbuttons %}
  

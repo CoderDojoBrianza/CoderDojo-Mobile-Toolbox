@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TutorialUploadForm
+from .forms import TutorialUploadForm,LevelSelectionForm
 from django.http import HttpResponseRedirect
 from django.core.files import File
 from django.core.files.base import ContentFile
@@ -69,7 +69,7 @@ def handle_uploaded_file(uploaded,description):
         
     return files
 
-def tutorials(request,topic_id):
+def tutorials(request,topic_id,material_level=None):
     context = base_function(request)
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -81,10 +81,21 @@ def tutorials(request,topic_id):
             return HttpResponseRedirect('/coderdojomobile/thanks_tutorial')
     # if a GET (or any other method) we'll create a blank form
     else:
-        projects=LearningMaterial.objects.all().filter(topic_id=topic_id).order_by('title')
+        # but still we have to filter checking whether a specific level was requested by url or by form
+        try:
+            requested_material_level = request.GET['level'] # read from form get
+        except KeyError:
+            requested_material_level = None
+        if requested_material_level is None or requested_material_level == LevelSelectionForm.LEVEL_ALL:
+            projects=LearningMaterial.objects.all().filter(topic_id=topic_id,is_active=True).order_by('level','title')
+        else:
+            projects=LearningMaterial.objects.all().filter(topic_id=topic_id,is_active=True,level=requested_material_level).order_by('level','title')
         form = TutorialUploadForm()
+        search_form = LevelSelectionForm()
         context.update({'projects': projects, 
-                    'form' : form})
+                    'form' : form,
+                    'topic_id': topic_id,
+                    'search_form' : search_form})
         return render(request, 'coderdojomobile/tutorials.html', context)
 
 def tutorial(request, tutorial_id):

@@ -78,5 +78,7 @@ class LearningMaterial(models.Model):
     resources = models.ManyToManyField(GenericUserFile, related_name='+')
     screenshot = models.OneToOneField(GenericUserFile, on_delete=models.DO_NOTHING, related_name='+', null=True)
     topic = models.ForeignKey(LearningTopic,on_delete=models.DO_NOTHING,null=True)
+    is_active = models.BooleanField(default=True)
+    level = models.IntegerField()
 
 	

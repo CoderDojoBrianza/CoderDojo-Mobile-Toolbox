@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-11 23:16+0200\n"
+"POT-Creation-Date: 2018-07-12 23:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\coderdojomobile\forms.py:15
+msgid "LEVEL_ALL"
+msgstr "Tutti"
+
+#: .\coderdojomobile\forms.py:16
+msgid "LEVEL_BEGINNER"
+msgstr "Principiante"
+
+#: .\coderdojomobile\forms.py:17
+msgid "LEVEL_INTERMEDIATE"
+msgstr "Intermedio"
+
+#: .\coderdojomobile\forms.py:18
+msgid "LEVEL_ADVANCED"
+msgstr "Avanzato"
+
+#: .\coderdojomobile\forms.py:20
+msgid "Level"
+msgstr "Livello"
 
 #: .\coderdojomobile\templates\coderdojomobile\base.html:52
 #: .\coderdojomobile\templates\coderdojomobile\index.html:24
@@ -62,3 +82,15 @@ msgstr "Programmi per creare giochi e immagini"
 #: .\coderdojomobile\templates\coderdojomobile\index.html:39
 msgid "Sprites_Long"
 msgstr "Tante immagini per creare i tuoi giochi"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
+msgid "Tutorials"
+msgstr "Tutorial"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
+msgid "search"
+msgstr "Cerca"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
+msgid "Upload"
+msgstr "Carica"

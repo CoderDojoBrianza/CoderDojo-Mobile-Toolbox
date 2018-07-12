@@ -19,11 +19,12 @@ urlpatterns = [
 	path('soft/', views.softwareDojo, name='soft'),
 	path('sprites/', views.sprites, name='sprites'),
 	path('spritesAlieni/', views.spritesAlieni, name='spritesAlieni'),
-	path('learningTopics/<int:topic_id>/', views_tutorial.tutorials, name='tutorials'),
 	path('tutorial/<int:tutorial_id>', views_tutorial.tutorial, name='tutorial'),
 	path('spriteCategory/<int:category_id>/', views.spriteCategory, name='spriteCategory'),
     path('thanks_tutorial/', views_tutorial.thanks, name='thanks'),
     path('learningTopics/', views.learningTopics, name='learningTopics'),
+    path('learningTopics/<int:topic_id>/', views_tutorial.tutorials, name='tutorials'),
+    #path('learningTopics/<int:topic_id>/<int:material_level>', views_tutorial.tutorials, name='learningTopicsWithLevelFilter'),
     path('login/', auth_views.LoginView.as_view(template_name='coderdojomobile/login.html'),name="login"),
     path('logout/', auth_views.LogoutView.as_view(next_page="/coderdojomobile/index"),name="logout"),
     
