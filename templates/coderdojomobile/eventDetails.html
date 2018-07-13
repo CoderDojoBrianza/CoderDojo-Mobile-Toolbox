@@ -16,36 +16,36 @@
 
 			{% if event %}
 
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="text-center">{{event.title}}</h2>
-			
-			<p class="text-center" >{{event.description}}</p>
-			
-		</a>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">{{event.title}}</h2>
+            <p class="text-center" >{{event.description}}</p>
+            <h2 class="text-left" >{% trans "participant_list" %}</h2>
+            <ul>
+                    {% for ticket in tickets %}
+                <li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}</li>
+                    {% endfor %}
+            </ul>
+        </div>
+    </div>
 
-<h2 class="text-left" >{% trans "participant_list" %}</h2>
-<ul>
-				{% for ticket in tickets %}
-		<li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}</li>
-				{% endfor %}
-</ul>
-	</div>
-
+    <div class="row">
+        <div class="col-md-12">
         <form action="{% url 'coderdojomobile:eventCheckInOut' event.id %}" method="POST"  >
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
             <button type="submit" class="btn btn-primary">
-                {% trans "Confirm" %}
+                    {% trans "Confirm" %}
             </button>
-        {% endbuttons %}
- 
-        </form>
+            {% endbuttons %}
 
-		
+        </form>
+        </div>
+    </div>
+
 			{% else %}
-	<p>{% trans "Event_not_found" %}</p>
+    <p>{% trans "Event_not_found" %}</p>
 			{% endif %}
 
 </div>

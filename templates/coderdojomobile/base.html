@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="author" content="CoderDojo Lissone">
-  <link rel="icon" href="{% static 'toolbox/custom-brand/favicon.ico' %}" />
+  <link rel="icon" href="{% static 'toolbox/custom-brand/favicon.ico' %}" >
   <title>{% block title %}{% endblock %}</title>
   <!--<link rel="stylesheet" href="{% static 'toolbox/css/main1.css' %}"/>-->
 
@@ -38,11 +38,11 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"/>
-				<span class="icon-bar"/>
-				<span class="icon-bar"/>
+				<span class="icon-bar"> </span>
+				<span class="icon-bar"> </span>
+				<span class="icon-bar"> </span>
 			</button>
 			<a class="navbar-brand" href="{% url 'coderdojomobile:index' %}">CoderDojo Mobile Toolkit</a>
 		</div>
@@ -89,4 +89,5 @@
     <script src="{% static 'toolbox/libraries/jquery-3.3.1.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'toolbox/libraries/bootstrap-3/js/bootstrap.min.js' %}"></script>
+</body>
 </html>
