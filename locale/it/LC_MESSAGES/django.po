@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-12 23:03+0200\n"
+"POT-Creation-Date: 2018-07-13 21:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,79 +18,144 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\coderdojomobile\forms.py:15
+#: .\forms.py:16
 msgid "LEVEL_ALL"
 msgstr "Tutti"
 
-#: .\coderdojomobile\forms.py:16
+#: .\forms.py:17
 msgid "LEVEL_BEGINNER"
 msgstr "Principiante"
 
-#: .\coderdojomobile\forms.py:17
+#: .\forms.py:18
 msgid "LEVEL_INTERMEDIATE"
 msgstr "Intermedio"
 
-#: .\coderdojomobile\forms.py:18
+#: .\forms.py:19
 msgid "LEVEL_ADVANCED"
 msgstr "Avanzato"
 
-#: .\coderdojomobile\forms.py:20
+#: .\forms.py:21
 msgid "Level"
 msgstr "Livello"
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:52
-#: .\coderdojomobile\templates\coderdojomobile\index.html:24
+#: .\forms.py:32
+msgid "Participant_Id"
+msgstr "Id Partecipante"
+
+#: .\forms.py:33
+msgid "Ticket Id"
+msgstr "Id Biglietto"
+
+#: .\forms.py:34
+msgid "Participant"
+msgstr "Partecipante"
+
+#: .\forms.py:43
+msgid "Check in"
+msgstr "Check in"
+
+#: .\forms.py:44
+msgid "Cancel check in"
+msgstr "Annulla Check in"
+
+#: .\forms.py:46
+msgid "Check_in_or_cancel"
+msgstr "Check in / annulla"
+
+#: .\templates\coderdojomobile\base.html:52
+#: .\templates\coderdojomobile\index.html:24
 msgid "Guides"
 msgstr "Guide"
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:55
-#: .\coderdojomobile\templates\coderdojomobile\index.html:31
+#: .\templates\coderdojomobile\base.html:55
+#: .\templates\coderdojomobile\index.html:31
 msgid "Tools"
 msgstr "Programmi"
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:58
-#: .\coderdojomobile\templates\coderdojomobile\index.html:38
+#: .\templates\coderdojomobile\base.html:58
+#: .\templates\coderdojomobile\index.html:38
 msgid "Sprites"
 msgstr "Sprites"
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:67
+#: .\templates\coderdojomobile\base.html:61
+#: .\templates\coderdojomobile\events.html:6
+#: .\templates\coderdojomobile\events.html:23
+msgid "Events"
+msgstr "Eventi"
+
+#: .\templates\coderdojomobile\base.html:70
 #, python-format
 msgid "Hello, %(logged_user)s!"
 msgstr "Benvenuto, %(logged_user)s!"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:13
+#: .\templates\coderdojomobile\eventCheckInOut.html:6
+#: .\templates\coderdojomobile\eventDetails.html:6
+#: .\templates\coderdojomobile\eventDetails.html:38
+#, fuzzy
+#| msgid "Events"
+msgid "Event"
+msgstr "Eventi"
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:26
+#, python-format
+msgid "Check in %(participant)s!"
+msgstr "%(participant)s ha fatto check in"
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:28
+#, python-format
+msgid "Cancel Check in %(participant)s!"
+msgstr "Check in annullato per %(participant)s"
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:31
+msgid "Back to the event"
+msgstr "Torna all'evento"
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\templates\coderdojomobile\eventDetails.html:46
+msgid "Event_not_found"
+msgstr "Evento non trovato"
+
+#: .\templates\coderdojomobile\eventDetails.html:32
+msgid "Confirm"
+msgstr "Conferma"
+
+#: .\templates\coderdojomobile\events.html:31
+msgid "event_date"
+msgstr "del"
+
+#: .\templates\coderdojomobile\index.html:13
 msgid "welcome_sentence"
 msgstr "Ciao, Ninja!"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:14
+#: .\templates\coderdojomobile\index.html:14
 msgid "welcome_banner"
 msgstr ""
 "Questo è il sito \"portatile\" del CoderDojo. Si trova proprio lì, dentro "
 "quella scatoletta che si chiama Raspberry Pi. In questo sito puoi trovare "
 "materiale utile per il CoderDojo"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:25
+#: .\templates\coderdojomobile\index.html:25
 msgid "Guides_Long"
 msgstr ""
 "Guide, Tutorial, Sushi Card e altro. Insomma, tanto materiale che spiega "
 "come creare giochi e altro"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:32
+#: .\templates\coderdojomobile\index.html:32
 msgid "Tools_Long"
 msgstr "Programmi per creare giochi e immagini"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:39
+#: .\templates\coderdojomobile\index.html:39
 msgid "Sprites_Long"
 msgstr "Tante immagini per creare i tuoi giochi"
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
+#: .\templates\coderdojomobile\tutorials.html:23
 msgid "Tutorials"
 msgstr "Tutorial"
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
+#: .\templates\coderdojomobile\tutorials.html:31
 msgid "search"
 msgstr "Cerca"
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
+#: .\templates\coderdojomobile\tutorials.html:73
 msgid "Upload"
 msgstr "Carica"

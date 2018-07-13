@@ -81,4 +81,24 @@ class LearningMaterial(models.Model):
     is_active = models.BooleanField(default=True)
     level = models.IntegerField()
 
-	
+class Participant(models.Model):
+    name = models.CharField(max_length=200)
+    surname = models.CharField(max_length=200)
+    uuid = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name + " " + self.surname  + "(" + self.uuid + ")"
+
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=1500)
+    event_date = models.DateField()
+    def __str__(self):
+        return self.title + "(" + self.event_date.strftime('%d-%B-%Y') + ")"
+
+class Ticket(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.DO_NOTHING, null=True)
+    participant = models.ForeignKey(Participant, on_delete=models.DO_NOTHING, null=True)
+    has_checked_in = models.BooleanField(default=False)
+    uuid = models.CharField(max_length=1500)
+    def __str__(self):
+        return self.participant.__str__() + " at " + self.event.__str__()

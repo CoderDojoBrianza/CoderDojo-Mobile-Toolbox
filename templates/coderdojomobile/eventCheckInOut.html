@@ -1,0 +1,42 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Event" %}{% endblock %}
+
+{% block page_styles %}
+{% endblock page_styles%}
+
+{% block content %}
+
+
+
+<div class="container">
+
+			{% if event %}
+
+
+        <h2 class="text-center">{{event.title}}</h2>
+        
+        <p class="text-center" >{{event.description}}</p>
+        
+        <p>
+        {% if ticket.has_checked_in %}
+            {% blocktrans with participant=ticket.participant %}Check in {{ participant }}!{% endblocktrans %} {# i18n with variables #}
+        {% else %}  
+            {% blocktrans with participant=ticket.participant %}Cancel Check in {{ participant }}!{% endblocktrans %} 
+        {% endif %}
+        </p>
+        <a href="{% url 'coderdojomobile:eventDetails' ticket.event.id %}"/>{% trans "Back to the event"%}</a>
+        
+
+	</div>
+			{% else %}
+	<p>{% trans "Event_not_found" %}</p>
+			{% endif %}
+
+</div>
+
+
+{% endblock content %}

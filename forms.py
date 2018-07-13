@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from . models import *
 
 class TutorialUploadForm(forms.Form):
     tutorial_description = forms.CharField(label='Project Description', max_length=200, widget=forms.Textarea)
@@ -18,3 +19,30 @@ class LevelSelectionForm(forms.Form):
         (LEVEL_ADVANCED, _('LEVEL_ADVANCED')),
     )
     level = forms.ChoiceField(label=_('Level'),choices=LEVEL_CHOICES)
+
+# Custom form field for participant
+class ParticipantModelChoiceField(forms.ModelChoiceField):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    def label_from_instance(self, participant):
+        return participant.name + " " + participant.surname
+
+
+class CheckInOutForm(forms.Form):
+    participant_id = forms.CharField(label=_('Participant_Id'), max_length=200,required=False)
+    ticket_id = forms.CharField(label=_('Ticket Id'), max_length=200,required=False)
+    participant = ParticipantModelChoiceField(label=_('Participant'),queryset=None,required=False)  # Here we use a list of participants from the db (we assume it's small!)
+
+    def __init__(self, queryset_for_form = None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['participant'].queryset = queryset_for_form
+
+    CHECK_IN = '1'
+    CHECK_IN_CANCEL = '0'
+    CHECK_CHOICES = (
+        (CHECK_IN, _('Check in')),
+        (CHECK_IN_CANCEL, _('Cancel check in')),
+    )
+    check_in_out=forms.ChoiceField(label=_('Check_in_or_cancel'),choices=CHECK_CHOICES,widget=forms.RadioSelect,initial=CHECK_IN)
+
+    

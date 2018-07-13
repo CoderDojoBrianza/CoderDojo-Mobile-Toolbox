@@ -23,3 +23,6 @@ admin.site.register(SpriteImages)
 admin.site.register(GenericUserFile)
 
 admin.site.register(LearningMaterial)
+admin.site.register(Event)
+admin.site.register(Participant)
+admin.site.register(Ticket)

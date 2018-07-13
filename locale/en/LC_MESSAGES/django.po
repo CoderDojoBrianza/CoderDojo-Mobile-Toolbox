@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-12 23:03+0200\n"
+"POT-Creation-Date: 2018-07-13 21:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,78 +18,141 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\coderdojomobile\forms.py:15
+#: .\forms.py:16
 msgid "LEVEL_ALL"
 msgstr "All"
 
-#: .\coderdojomobile\forms.py:16
+#: .\forms.py:17
 msgid "LEVEL_BEGINNER"
 msgstr "Beginner"
 
-#: .\coderdojomobile\forms.py:17
+#: .\forms.py:18
 msgid "LEVEL_INTERMEDIATE"
 msgstr "Intermediate"
 
-#: .\coderdojomobile\forms.py:18
+#: .\forms.py:19
 msgid "LEVEL_ADVANCED"
 msgstr "Advanced"
 
-#: .\coderdojomobile\forms.py:20
+#: .\forms.py:21
 msgid "Level"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:52
-#: .\coderdojomobile\templates\coderdojomobile\index.html:24
+#: .\forms.py:32
+msgid "Participant_Id"
+msgstr "Participant Id"
+
+#: .\forms.py:33
+msgid "Ticket Id"
+msgstr ""
+
+#: .\forms.py:34
+msgid "Participant"
+msgstr ""
+
+#: .\forms.py:43
+msgid "Check in"
+msgstr ""
+
+#: .\forms.py:44
+msgid "Cancel check in"
+msgstr ""
+
+#: .\forms.py:46
+msgid "Check_in_or_cancel"
+msgstr "Check in or cancel"
+
+#: .\templates\coderdojomobile\base.html:52
+#: .\templates\coderdojomobile\index.html:24
 msgid "Guides"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:55
-#: .\coderdojomobile\templates\coderdojomobile\index.html:31
+#: .\templates\coderdojomobile\base.html:55
+#: .\templates\coderdojomobile\index.html:31
 msgid "Tools"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:58
-#: .\coderdojomobile\templates\coderdojomobile\index.html:38
+#: .\templates\coderdojomobile\base.html:58
+#: .\templates\coderdojomobile\index.html:38
 msgid "Sprites"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\base.html:67
+#: .\templates\coderdojomobile\base.html:61
+#: .\templates\coderdojomobile\events.html:6
+#: .\templates\coderdojomobile\events.html:23
+msgid "Events"
+msgstr ""
+
+#: .\templates\coderdojomobile\base.html:70
 #, python-format
 msgid "Hello, %(logged_user)s!"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:13
+#: .\templates\coderdojomobile\eventCheckInOut.html:6
+#: .\templates\coderdojomobile\eventDetails.html:6
+#: .\templates\coderdojomobile\eventDetails.html:38
+msgid "Event"
+msgstr ""
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:26
+#, python-format
+msgid "Check in %(participant)s!"
+msgstr "%(participant)s has checked in!"
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:28
+#, python-format
+msgid "Cancel Check in %(participant)s!"
+msgstr "Check in for %(participant)s canceled"
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:31
+msgid "Back to the event"
+msgstr ""
+
+#: .\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\templates\coderdojomobile\eventDetails.html:46
+msgid "Event_not_found"
+msgstr "Event not found"
+
+#: .\templates\coderdojomobile\eventDetails.html:32
+msgid "Confirm"
+msgstr ""
+
+#: .\templates\coderdojomobile\events.html:31
+msgid "event_date"
+msgstr "on"
+
+#: .\templates\coderdojomobile\index.html:13
 msgid "welcome_sentence"
 msgstr "Hello, Ninja!"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:14
+#: .\templates\coderdojomobile\index.html:14
 msgid "welcome_banner"
 msgstr ""
 "Welcome to the CoderDojo portable site! Here you can find useful tools / "
 "resources for the session"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:25
+#: .\templates\coderdojomobile\index.html:25
 msgid "Guides_Long"
 msgstr ""
 "Guides, Tutorials, Sushi Cards and more. Lots of resources explaing how to "
 "create games, and more"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:32
+#: .\templates\coderdojomobile\index.html:32
 msgid "Tools_Long"
 msgstr "Software tools to create games and resources for games"
 
-#: .\coderdojomobile\templates\coderdojomobile\index.html:39
+#: .\templates\coderdojomobile\index.html:39
 msgid "Sprites_Long"
 msgstr "Lots of images you can use in your games!"
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
+#: .\templates\coderdojomobile\tutorials.html:23
 msgid "Tutorials"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
+#: .\templates\coderdojomobile\tutorials.html:31
 msgid "search"
 msgstr "Search"
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
+#: .\templates\coderdojomobile\tutorials.html:73
 msgid "Upload"
 msgstr ""

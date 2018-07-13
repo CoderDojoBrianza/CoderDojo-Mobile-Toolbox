@@ -171,6 +171,11 @@ Steps:
 
 1. Initialize the DB with the `./manage.py migrate` command
 
+1. Compile local translations:
+
+    ```
+    django-admin compilemessages
+    ```
 
 ### Running the app
 

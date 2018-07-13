@@ -1,0 +1,45 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+{% load i18n %}
+{% block title %}{% trans "Events" %}{% endblock %}
+
+{% block page_styles %}
+<style>
+
+	div.event    {  padding:10px; }
+
+	div.description    { padding-left:10px; display: inline-block; }
+	sprite img {margin:10px;}
+</style>
+{% endblock page_styles%}
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>{% trans "Events" %}</h1>
+	</div>
+			{% if events %}
+				{% for event in events %}
+	<a href="{% url 'coderdojomobile:eventDetails' event.id %}">
+		<div class="row event">
+			<div class="col-md-4">
+                
+				<p class="text-left" >{{event.title}} {% trans "event_date" %} {{event.event_date}}</p>
+
+			</div>
+		</div>
+	</a>
+				{% endfor %}
+
+			{% else %}
+	<p>Nessun Evento Disponibile</p>
+			{% endif %}
+
+</div>
+
+
+{% endblock content %}

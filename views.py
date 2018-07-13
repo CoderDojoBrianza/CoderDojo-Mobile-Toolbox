@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .forms import TutorialUploadForm
+from .forms import TutorialUploadForm, CheckInOutForm
 from django.http import HttpResponseRedirect
 from . models import *
 import os
@@ -167,6 +167,64 @@ def learningTopics(request):
         'learning_topics': learning_topics
     })
     return render(request, 'coderdojomobile/learningTopics.html', context)
+
+
+
+def events(request):
+    context = base_function(request)
+    events = Event.objects.order_by('event_date')
+    context.update({
+        'events': events,
+    })
+    return render(request, 'coderdojomobile/events.html', context)
+
+def eventDetails(request,event_id):
+    context = base_function(request)
+    event = Event.objects.order_by('event_date').get(id=event_id)
+    tickets = Ticket.objects.order_by('participant__name').filter(event__id=event_id)
+    queryset_for_form = Participant.objects.filter(ticket__event__id=event_id) # Navigate participants from tickets of this event
+    form = CheckInOutForm(queryset_for_form)
+    context.update({
+        'event': event,
+        'tickets': tickets,
+        'form':form
+    })
+    return render(request, 'coderdojomobile/eventDetails.html', context)
+
+def eventCheckInOut(request,event_id):
+    context = base_function(request)
+    if request.method == 'POST': #fix get
+        # create a form instance and populate it with data from the request:
+        queryset = Participant.objects.filter(ticket__event__id=event_id) # Navigate participants from tickets of this event
+        form = CheckInOutForm(queryset_for_form=queryset,data=request.POST)
+        ticket = None 
+        if form.is_valid():
+            # Check which field is populated
+            if (len(form.cleaned_data['participant_id'])>0 ):
+                ticket=Ticket.objects.get(event__id=event_id,participant__uuid=form.cleaned_data['participant_id']) 
+            elif (len(form.cleaned_data['ticket_id'])>0):
+                ticket=Ticket.objects.get(event__id=event_id,uuid=form.cleaned_data['ticket_id']) 
+            elif not (form.cleaned_data['participant'] is None):
+                ticket=Ticket.objects.get(event__id=event_id,participant__id=form.cleaned_data['participant'].id)
+            if not (ticket is None): # We found the ticket, set status
+                if form.cleaned_data['check_in_out']==form.CHECK_IN:
+                    ticket.has_checked_in=True
+                else:
+                    ticket.has_checked_in=False
+                ticket.save()
+            context.update({
+                'ticket': ticket,
+                'event': ticket.event
+            })
+        return render(request, 'coderdojomobile/eventCheckInOut.html', context)
+
+def events(request):
+    context = base_function(request)
+    events = Event.objects.order_by('event_date')
+    context.update({
+        'events': events,
+    })
+    return render(request, 'coderdojomobile/events.html', context)
 
 
 #----------------------------------------------------------------------------------------
