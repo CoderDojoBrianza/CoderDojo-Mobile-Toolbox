@@ -11,10 +11,11 @@ Currently the application is in an early development stage, but it has already b
 - Tutorial repository with resources (e.g. sprites, sounds)
 - Sprite gallery
 - Software repository (e.g. Scratch installer) 
+- Event Management
 
 <img src="doc/images/homepage_screenshot.png" style="margin:10px ; padding: 10px; border:1px solid #24292e; width:80%">
 <img src="doc/images/tutorial_screenshot.png" style="margin:10px ; padding: 10px; border:1px solid #24292e; width:80%">
-
+<img src="doc/images/event_mgmt_screenshot.png" style="margin:10px ; padding: 10px; border:1px solid #24292e; width:80%">
 
 ## Trying It
 

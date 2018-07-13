@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 21:32+0200\n"
+"POT-Creation-Date: 2018-07-13 21:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,6 @@ msgstr ""
 
 #: .\templates\coderdojomobile\eventCheckInOut.html:6
 #: .\templates\coderdojomobile\eventDetails.html:6
-#: .\templates\coderdojomobile\eventDetails.html:38
 msgid "Event"
 msgstr ""
 
@@ -116,6 +115,10 @@ msgstr "Event not found"
 #: .\templates\coderdojomobile\eventDetails.html:32
 msgid "Confirm"
 msgstr ""
+
+#: .\templates\coderdojomobile\eventDetails.html:38
+msgid "participant_list"
+msgstr "Participant List"
 
 #: .\templates\coderdojomobile\events.html:31
 msgid "event_date"

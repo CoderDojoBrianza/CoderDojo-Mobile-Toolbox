@@ -24,6 +24,14 @@
 			
 		</a>
 
+<h2 class="text-left" >{% trans "participant_list" %}</h2>
+<ul>
+				{% for ticket in tickets %}
+		<li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}</li>
+				{% endfor %}
+</ul>
+	</div>
+
         <form action="{% url 'coderdojomobile:eventCheckInOut' event.id %}" method="POST"  >
         {% csrf_token %}
         {% bootstrap_form form %}
@@ -35,13 +43,7 @@
  
         </form>
 
-		<h2 class="text-left" >{% trans "Event" %}</h2>
-<ul>
-				{% for ticket in tickets %}
-		<li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}</li>
-				{% endfor %}
-</ul>
-	</div>
+		
 			{% else %}
 	<p>{% trans "Event_not_found" %}</p>
 			{% endif %}
