@@ -54,7 +54,7 @@ Steps:
     ```
 
 1. Configure `settings.py` in the `toolbox` folder:
-    1. add the app to the installed apps:
+    1. add the app, and the `bootstrap3` app, to the installed apps:
 
         ```
             INSTALLED_APPS = [
@@ -66,6 +66,7 @@ Steps:
                 'django.contrib.staticfiles',
                 'django.contrib.admindocs',
                 'coderdojomobile.apps.CoderDojoMobileAppConfig', #configure the app
+                'bootstrap3' # 
             ]
         ```
 
@@ -95,7 +96,7 @@ Steps:
 
         ```
         MEDIA_URL = '/media/'
-        MEDIA_ROOT = '/var/www/example.com/media/'
+        MEDIA_ROOT = '/home/pi/media' #example
         ```
 
     1. activate localization:
@@ -117,8 +118,7 @@ Steps:
     
         ```
         LOCALE_PATHS = [
-            '/home/www/project/common_files/locale',
-            '/var/local/translations/locale', #examples, set your own
+            '/home/pi/toolbox/coderdojomobile/locale', #examples, set your own
         ]
         ```
 
@@ -190,6 +190,18 @@ In production, you'll have to start Apache. Refer to your system's guides for th
 ``` 
 python manage.py collectstatic 
 ```
+
+Also, remember to configure the media folder in the `/etc/apache2/sites-available/000-default.conf` file (example):
+
+```
+
+    Alias /media /home/pi/media
+    <Directory /home/pi/media>
+        Require all granted
+    </Directory>
+
+```
+
 ### Creating content
 
 Of course, when you first run the app, it will be empty. To actually use it, you need to provide some content. Currently the app offers only very limited content upload capabilities, so you'll have to initialize database tables using the admin interface / a tool to modify database tables, like [DB Browser for sqlite](https://sqlitebrowser.org/)
