@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 21:51+0200\n"
+"POT-Creation-Date: 2018-07-16 21:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,147 +18,155 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:16
+#: .\coderdojomobile\forms.py:16
 msgid "LEVEL_ALL"
 msgstr "Tutti"
 
-#: .\forms.py:17
+#: .\coderdojomobile\forms.py:17
 msgid "LEVEL_BEGINNER"
 msgstr "Principiante"
 
-#: .\forms.py:18
+#: .\coderdojomobile\forms.py:18
 msgid "LEVEL_INTERMEDIATE"
 msgstr "Intermedio"
 
-#: .\forms.py:19
+#: .\coderdojomobile\forms.py:19
 msgid "LEVEL_ADVANCED"
 msgstr "Avanzato"
 
-#: .\forms.py:21
+#: .\coderdojomobile\forms.py:21
 msgid "Level"
 msgstr "Livello"
 
-#: .\forms.py:32
+#: .\coderdojomobile\forms.py:32
 msgid "Participant_Id"
 msgstr "Id Partecipante"
 
-#: .\forms.py:33
+#: .\coderdojomobile\forms.py:33
 msgid "Ticket Id"
 msgstr "Id Biglietto"
 
-#: .\forms.py:34
+#: .\coderdojomobile\forms.py:34
 msgid "Participant"
 msgstr "Partecipante"
 
-#: .\forms.py:43
+#: .\coderdojomobile\forms.py:43
 msgid "Check in"
 msgstr "Check in"
 
-#: .\forms.py:44
+#: .\coderdojomobile\forms.py:44
 msgid "Cancel check in"
 msgstr "Annulla Check in"
 
-#: .\forms.py:46
+#: .\coderdojomobile\forms.py:46
 msgid "Check_in_or_cancel"
 msgstr "Check in / annulla"
 
-#: .\templates\coderdojomobile\base.html:52
-#: .\templates\coderdojomobile\index.html:24
+#: .\coderdojomobile\templates\coderdojomobile\base.html:52
+#: .\coderdojomobile\templates\coderdojomobile\index.html:24
 msgid "Guides"
 msgstr "Guide"
 
-#: .\templates\coderdojomobile\base.html:55
-#: .\templates\coderdojomobile\index.html:31
+#: .\coderdojomobile\templates\coderdojomobile\base.html:55
+#: .\coderdojomobile\templates\coderdojomobile\index.html:31
 msgid "Tools"
 msgstr "Programmi"
 
-#: .\templates\coderdojomobile\base.html:58
-#: .\templates\coderdojomobile\index.html:38
+#: .\coderdojomobile\templates\coderdojomobile\base.html:58
+#: .\coderdojomobile\templates\coderdojomobile\index.html:38
 msgid "Sprites"
 msgstr "Sprites"
 
-#: .\templates\coderdojomobile\base.html:61
-#: .\templates\coderdojomobile\events.html:6
-#: .\templates\coderdojomobile\events.html:23
+#: .\coderdojomobile\templates\coderdojomobile\base.html:61
+#: .\coderdojomobile\templates\coderdojomobile\events.html:6
+#: .\coderdojomobile\templates\coderdojomobile\events.html:23
 msgid "Events"
 msgstr "Eventi"
 
-#: .\templates\coderdojomobile\base.html:70
+#: .\coderdojomobile\templates\coderdojomobile\base.html:70
 #, python-format
 msgid "Hello, %(logged_user)s!"
 msgstr "Benvenuto, %(logged_user)s!"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:6
-#: .\templates\coderdojomobile\eventDetails.html:6
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:6
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:6
 #, fuzzy
 #| msgid "Events"
 msgid "Event"
 msgstr "Eventi"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:26
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:26
 #, python-format
 msgid "Check in %(participant)s!"
 msgstr "%(participant)s ha fatto check in"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:28
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:28
 #, python-format
 msgid "Cancel Check in %(participant)s!"
 msgstr "Check in annullato per %(participant)s"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:31
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:31
 msgid "Back to the event"
 msgstr "Torna all'evento"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:36
-#: .\templates\coderdojomobile\eventDetails.html:46
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:56
 msgid "Event_not_found"
 msgstr "Evento non trovato"
 
-#: .\templates\coderdojomobile\eventDetails.html:32
-msgid "Confirm"
-msgstr "Conferma"
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:21
+msgid "total_participants"
+msgstr "Totale Partecipanti"
 
-#: .\templates\coderdojomobile\eventDetails.html:38
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:24
+msgid "still_missing"
+msgstr "Ne mancano ancora"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:31
 msgid "participant_list"
 msgstr "Lista Partecipanti"
 
-#: .\templates\coderdojomobile\events.html:31
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:47
+msgid "Confirm"
+msgstr "Conferma"
+
+#: .\coderdojomobile\templates\coderdojomobile\events.html:31
 msgid "event_date"
 msgstr "del"
 
-#: .\templates\coderdojomobile\index.html:13
+#: .\coderdojomobile\templates\coderdojomobile\index.html:13
 msgid "welcome_sentence"
 msgstr "Ciao, Ninja!"
 
-#: .\templates\coderdojomobile\index.html:14
+#: .\coderdojomobile\templates\coderdojomobile\index.html:14
 msgid "welcome_banner"
 msgstr ""
 "Questo è il sito \"portatile\" del CoderDojo. Si trova proprio lì, dentro "
 "quella scatoletta che si chiama Raspberry Pi. In questo sito puoi trovare "
 "materiale utile per il CoderDojo"
 
-#: .\templates\coderdojomobile\index.html:25
+#: .\coderdojomobile\templates\coderdojomobile\index.html:25
 msgid "Guides_Long"
 msgstr ""
 "Guide, Tutorial, Sushi Card e altro. Insomma, tanto materiale che spiega "
 "come creare giochi e altro"
 
-#: .\templates\coderdojomobile\index.html:32
+#: .\coderdojomobile\templates\coderdojomobile\index.html:32
 msgid "Tools_Long"
 msgstr "Programmi per creare giochi e immagini"
 
-#: .\templates\coderdojomobile\index.html:39
+#: .\coderdojomobile\templates\coderdojomobile\index.html:39
 msgid "Sprites_Long"
 msgstr "Tante immagini per creare i tuoi giochi"
 
-#: .\templates\coderdojomobile\tutorials.html:23
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
 msgid "Tutorials"
 msgstr "Tutorial"
 
-#: .\templates\coderdojomobile\tutorials.html:31
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
 msgid "search"
 msgstr "Cerca"
 
-#: .\templates\coderdojomobile\tutorials.html:73
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
 msgid "Upload"
 msgstr "Carica"

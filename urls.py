@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,reverse_lazy
 from . import views
 from . import views_tutorial
 from django.contrib.auth import views as auth_views
@@ -29,8 +29,8 @@ urlpatterns = [
     path('eventDetails/check_in_out/<int:event_id>', views.eventCheckInOut, name='eventCheckInOut'),
     #path('learningTopics/<int:topic_id>/<int:material_level>', views_tutorial.tutorials, name='learningTopicsWithLevelFilter'),
     path('login/', auth_views.LoginView.as_view(template_name='coderdojomobile/login.html'),name="login"),
-    path('logout/', auth_views.LogoutView.as_view(next_page="/coderdojomobile/index"),name="logout"),
-    
+    path('logout/', auth_views.LogoutView.as_view(next_page=reverse_lazy('coderdojomobile:index')),name="logout"),
+   
 # views non funzionali per il progetto ma solo per prova
     path('lista/', views.lista, name='lista'),
     path('libro/<int:id>/', views.libro, name='libro'),

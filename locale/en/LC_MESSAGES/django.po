@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 21:51+0200\n"
+"POT-Creation-Date: 2018-07-16 21:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,144 +18,152 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:16
+#: .\coderdojomobile\forms.py:16
 msgid "LEVEL_ALL"
 msgstr "All"
 
-#: .\forms.py:17
+#: .\coderdojomobile\forms.py:17
 msgid "LEVEL_BEGINNER"
 msgstr "Beginner"
 
-#: .\forms.py:18
+#: .\coderdojomobile\forms.py:18
 msgid "LEVEL_INTERMEDIATE"
 msgstr "Intermediate"
 
-#: .\forms.py:19
+#: .\coderdojomobile\forms.py:19
 msgid "LEVEL_ADVANCED"
 msgstr "Advanced"
 
-#: .\forms.py:21
+#: .\coderdojomobile\forms.py:21
 msgid "Level"
 msgstr ""
 
-#: .\forms.py:32
+#: .\coderdojomobile\forms.py:32
 msgid "Participant_Id"
 msgstr "Participant Id"
 
-#: .\forms.py:33
+#: .\coderdojomobile\forms.py:33
 msgid "Ticket Id"
 msgstr ""
 
-#: .\forms.py:34
+#: .\coderdojomobile\forms.py:34
 msgid "Participant"
 msgstr ""
 
-#: .\forms.py:43
+#: .\coderdojomobile\forms.py:43
 msgid "Check in"
 msgstr ""
 
-#: .\forms.py:44
+#: .\coderdojomobile\forms.py:44
 msgid "Cancel check in"
 msgstr ""
 
-#: .\forms.py:46
+#: .\coderdojomobile\forms.py:46
 msgid "Check_in_or_cancel"
 msgstr "Check in or cancel"
 
-#: .\templates\coderdojomobile\base.html:52
-#: .\templates\coderdojomobile\index.html:24
+#: .\coderdojomobile\templates\coderdojomobile\base.html:52
+#: .\coderdojomobile\templates\coderdojomobile\index.html:24
 msgid "Guides"
 msgstr ""
 
-#: .\templates\coderdojomobile\base.html:55
-#: .\templates\coderdojomobile\index.html:31
+#: .\coderdojomobile\templates\coderdojomobile\base.html:55
+#: .\coderdojomobile\templates\coderdojomobile\index.html:31
 msgid "Tools"
 msgstr ""
 
-#: .\templates\coderdojomobile\base.html:58
-#: .\templates\coderdojomobile\index.html:38
+#: .\coderdojomobile\templates\coderdojomobile\base.html:58
+#: .\coderdojomobile\templates\coderdojomobile\index.html:38
 msgid "Sprites"
 msgstr ""
 
-#: .\templates\coderdojomobile\base.html:61
-#: .\templates\coderdojomobile\events.html:6
-#: .\templates\coderdojomobile\events.html:23
+#: .\coderdojomobile\templates\coderdojomobile\base.html:61
+#: .\coderdojomobile\templates\coderdojomobile\events.html:6
+#: .\coderdojomobile\templates\coderdojomobile\events.html:23
 msgid "Events"
 msgstr ""
 
-#: .\templates\coderdojomobile\base.html:70
+#: .\coderdojomobile\templates\coderdojomobile\base.html:70
 #, python-format
 msgid "Hello, %(logged_user)s!"
 msgstr ""
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:6
-#: .\templates\coderdojomobile\eventDetails.html:6
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:6
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:6
 msgid "Event"
 msgstr ""
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:26
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:26
 #, python-format
 msgid "Check in %(participant)s!"
 msgstr "%(participant)s has checked in!"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:28
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:28
 #, python-format
 msgid "Cancel Check in %(participant)s!"
 msgstr "Check in for %(participant)s canceled"
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:31
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:31
 msgid "Back to the event"
 msgstr ""
 
-#: .\templates\coderdojomobile\eventCheckInOut.html:36
-#: .\templates\coderdojomobile\eventDetails.html:46
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:56
 msgid "Event_not_found"
 msgstr "Event not found"
 
-#: .\templates\coderdojomobile\eventDetails.html:32
-msgid "Confirm"
-msgstr ""
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:21
+msgid "total_participants"
+msgstr "Total participants"
 
-#: .\templates\coderdojomobile\eventDetails.html:38
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:24
+msgid "still_missing"
+msgstr "Still missing"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:31
 msgid "participant_list"
 msgstr "Participant List"
 
-#: .\templates\coderdojomobile\events.html:31
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:47
+msgid "Confirm"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\events.html:31
 msgid "event_date"
 msgstr "on"
 
-#: .\templates\coderdojomobile\index.html:13
+#: .\coderdojomobile\templates\coderdojomobile\index.html:13
 msgid "welcome_sentence"
 msgstr "Hello, Ninja!"
 
-#: .\templates\coderdojomobile\index.html:14
+#: .\coderdojomobile\templates\coderdojomobile\index.html:14
 msgid "welcome_banner"
 msgstr ""
 "Welcome to the CoderDojo portable site! Here you can find useful tools / "
 "resources for the session"
 
-#: .\templates\coderdojomobile\index.html:25
+#: .\coderdojomobile\templates\coderdojomobile\index.html:25
 msgid "Guides_Long"
 msgstr ""
 "Guides, Tutorials, Sushi Cards and more. Lots of resources explaing how to "
 "create games, and more"
 
-#: .\templates\coderdojomobile\index.html:32
+#: .\coderdojomobile\templates\coderdojomobile\index.html:32
 msgid "Tools_Long"
 msgstr "Software tools to create games and resources for games"
 
-#: .\templates\coderdojomobile\index.html:39
+#: .\coderdojomobile\templates\coderdojomobile\index.html:39
 msgid "Sprites_Long"
 msgstr "Lots of images you can use in your games!"
 
-#: .\templates\coderdojomobile\tutorials.html:23
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
 msgid "Tutorials"
 msgstr ""
 
-#: .\templates\coderdojomobile\tutorials.html:31
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
 msgid "search"
 msgstr "Search"
 
-#: .\templates\coderdojomobile\tutorials.html:73
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
 msgid "Upload"
 msgstr ""

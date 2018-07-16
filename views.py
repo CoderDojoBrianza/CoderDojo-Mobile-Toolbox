@@ -6,7 +6,8 @@ from django.http import HttpResponseRedirect
 from . models import *
 import os
 import unicodedata
-
+from django.contrib.auth.decorators import permission_required
+from django.urls import reverse_lazy #https://docs.djangoproject.com/en/dev/ref/urlresolvers/#reverse-lazy
 
 toggle='-'
 
@@ -182,15 +183,24 @@ def eventDetails(request,event_id):
     context = base_function(request)
     event = Event.objects.order_by('event_date').get(id=event_id)
     tickets = Ticket.objects.order_by('participant__name').filter(event__id=event_id)
+    total_participants = tickets.count()
+    missing_participants=0
+    for ticket in tickets:
+        if ticket.has_checked_in==False:
+            missing_participants = missing_participants + 1 
+    total_participants = tickets.count()
     queryset_for_form = Participant.objects.filter(ticket__event__id=event_id) # Navigate participants from tickets of this event
     form = CheckInOutForm(queryset_for_form)
     context.update({
         'event': event,
         'tickets': tickets,
-        'form':form
+        'form':form,
+        'total_participants': total_participants,
+        'missing_participants': missing_participants
     })
     return render(request, 'coderdojomobile/eventDetails.html', context)
 
+@permission_required('coderdojomobile.change_ticket',login_url=reverse_lazy('coderdojomobile:login',current_app="coderdojomobile"))
 def eventCheckInOut(request,event_id):
     context = base_function(request)
     if request.method == 'POST': #fix get

@@ -78,7 +78,7 @@ def tutorials(request,topic_id,material_level=None):
         # check whether it's valid:
         if form.is_valid():
             files = handle_uploaded_file(request.FILES['tutorial_file'],request.POST['tutorial_description'])
-            return HttpResponseRedirect('/coderdojomobile/thanks_tutorial')
+            return HttpResponseRedirect(reverse_lazy('coderdojomobile:thanks'))
     # if a GET (or any other method) we'll create a blank form
     else:
         # but still we have to filter checking whether a specific level was requested by url or by form
