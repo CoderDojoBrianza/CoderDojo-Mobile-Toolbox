@@ -1,0 +1,28 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% block title %}Thanks{% endblock %}
+
+{% block page_styles %}
+<style>
+@media (min-width: 992px) {
+  .col-md-4:nth-child(3n+1) {
+    clear: left;
+  }
+}
+</style>
+{% endblock page_styles %}
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>Thanks for uploading!</h1>
+	</div>
+
+
+</div>
+
+
+{% endblock content %}

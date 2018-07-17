@@ -1,0 +1,45 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% block title %}Sprites per Scratch{% endblock %}
+
+{% block page_styles %}
+<style>
+@media (min-width: 992px) {
+  .col-md-4:nth-child(3n+1) {
+    clear: left;
+  }
+}
+</style>
+{% endblock page_styles %}
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>Sprites</h1>
+	</div>
+	<div class="row">
+
+			{% if sprite_categories %}
+				{% for category in sprite_categories %}
+		<div class="col-md-4">
+			<a href="{% url 'coderdojomobile:spriteCategory' category.id %}">
+				<img src="{% static 'toolbox/Sprite/'|add:category.category_image %}" class="img-responsive center-block" style="width: 100% \9;" alt="{{category.category_name}}" />
+				<h2 class="text-center">{{category.sprite_category_name}}</h2>
+				<p class="text-center" >{{category.sprite_category_description}}</p>
+			</a>
+		</div>
+
+				{% endfor %}
+
+			{% else %}
+		<p>Nessuno Sprite Disponibile</p>
+			{% endif %}
+
+	</div>
+</div>
+
+
+{% endblock content %}

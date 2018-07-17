@@ -1,0 +1,7 @@
+{% load static %}
+<h1>GenDB Elenco Sushy Cards</h1>
+<ul>
+{% for num, nome in file_dict.items %}
+    <li><a href="{% static 'toolbox/'%}{{ nome }}.pdf">{{ nome }}</a></li>
+{% endfor %}
+ </ul>

@@ -1,0 +1,44 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% block title %}Sprites per Scratch{% endblock %}
+
+{% block page_styles %}
+<style>
+
+	div.sprite    { display: inline-block; border: 1px solid;
+		border-radius: 5px; padding:10px; margin:10px; }
+
+	div.description    { padding-left:10px; display: inline-block; }
+	sprite img {margin:10px;}
+</style>
+{% endblock page_styles%}
+
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>Sprites</h1>
+	</div>
+	<div class="row">
+			{% if sprites %}
+				{% for sprite in sprites %}
+		<div class="col-md-6">
+			<div class="sprite">
+						{% for s_image in sprite.imgs %}
+				<img src="{% static 'toolbox/Sprite/'|add:s_image.image_file %}"   alt="" />
+						{% endfor %}
+				<div class="description">{{ sprite.sprite_name }}</div>
+			</div>
+		</div>
+				{% endfor %}
+			{% else %}
+		<p>Nessuno Sprite Disponibile</p>
+			{% endif %}
+
+	</div>
+
+
+{% endblock content %}

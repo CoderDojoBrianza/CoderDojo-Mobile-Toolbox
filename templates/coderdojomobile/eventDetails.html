@@ -1,0 +1,67 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}{% trans "Event" %}{% endblock %}
+
+{% block page_styles %}
+{% endblock page_styles%}
+
+{% block content %}
+
+
+
+<div class="container">
+
+			{% if event %}
+
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">{{event.title}}</h2>
+            <p class="text-center" >{{event.description}}</p>
+        <div>
+    </div >
+    <div class="row">
+        <div class="col-md-4">
+        {% trans 'total_participants' %}: {{total_participants}}
+        </div>
+        <div class="col-md-4">
+        {% trans 'still_missing' %}: {{missing_participants}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-left" >{% trans "participant_list" %}</h2>
+            <ul>
+                    {% for ticket in tickets %}
+                <li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}</li>
+                    {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% if perms.change_ticket %} {#Only users with the appropriate permission can check in / out #}
+    <div class="row">
+        <div class="col-md-12">
+        <form action="{% url 'coderdojomobile:eventCheckInOut' event.id %}" method="POST"  >
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                    {% trans "Confirm" %}
+            </button>
+            {% endbuttons %}
+
+        </form>
+        </div>
+    </div>
+    {% endif %}
+			{% else %}
+    <p>{% trans "Event_not_found" %}</p>
+			{% endif %}
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,93 @@
+{% load static %}
+{% load bootstrap3 %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="author" content="CoderDojo Lissone">
+  <link rel="icon" href="{% static 'toolbox/custom-brand/favicon.ico' %}" >
+  <title>{% block title %}{% endblock %}</title>
+  <!--<link rel="stylesheet" href="{% static 'toolbox/css/main1.css' %}"/>-->
+
+    <!-- Bootstrap -->
+    <link href="{% static 'toolbox/libraries/bootstrap-3/css/bootstrap.min.css' %} " rel="stylesheet">
+
+	<!-- Jumbotron -->
+	<link href="{% static 'toolbox/css/jumbotron.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="{% static 'toolbox/libraries/html5shiv.min.js' %}"></script>
+      <script src="{% static 'toolbox/libraries/respond.min.js' %}"></script>
+
+    <![endif]-->
+
+		{% block page_styles %}{% endblock page_styles%}
+
+  </head>
+	
+  <body id="sfondo">
+
+<!------>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"> </span>
+				<span class="icon-bar"> </span>
+				<span class="icon-bar"> </span>
+			</button>
+			<a class="navbar-brand" href="{% url 'coderdojomobile:index' %}">CoderDojo Mobile Toolkit</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="{% url 'coderdojomobile:learningTopics' %}">{% trans "Guides" %}</a>
+				</li>
+				<li>
+					<a href="{% url 'coderdojomobile:soft' %}">{% trans "Tools" %}</a>
+				</li>
+				<li>
+					<a href="{% url 'coderdojomobile:sprites' %}">{% trans "Sprites" %}</a>
+				</li>
+                <li>
+					<a href="{% url 'coderdojomobile:events' %}">{% trans "Events" %}</a>
+				</li>
+			</ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">                    
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon icon="user" extra_classes="glyphicon-inverse" %}</span></a>
+                    <ul class="dropdown-menu">
+                        {% if user %}
+                        
+                        <li><a href="#">{% blocktrans with logged_user=user %}Hello, {{ logged_user }}!{% endblocktrans %} {# i18n with variables #}</a></li>                        
+                        <li><a href="{%url 'coderdojomobile:logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{%url 'coderdojomobile:login' %}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+		</div>
+        
+            
+	</div>
+</nav>
+
+
+	{% block content %}{% endblock %}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'toolbox/libraries/jquery-3.3.1.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'toolbox/libraries/bootstrap-3/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

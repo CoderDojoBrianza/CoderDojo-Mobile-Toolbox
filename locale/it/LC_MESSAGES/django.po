@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-16 21:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\coderdojomobile\forms.py:16
+msgid "LEVEL_ALL"
+msgstr "Tutti"
+
+#: .\coderdojomobile\forms.py:17
+msgid "LEVEL_BEGINNER"
+msgstr "Principiante"
+
+#: .\coderdojomobile\forms.py:18
+msgid "LEVEL_INTERMEDIATE"
+msgstr "Intermedio"
+
+#: .\coderdojomobile\forms.py:19
+msgid "LEVEL_ADVANCED"
+msgstr "Avanzato"
+
+#: .\coderdojomobile\forms.py:21
+msgid "Level"
+msgstr "Livello"
+
+#: .\coderdojomobile\forms.py:32
+msgid "Participant_Id"
+msgstr "Id Partecipante"
+
+#: .\coderdojomobile\forms.py:33
+msgid "Ticket Id"
+msgstr "Id Biglietto"
+
+#: .\coderdojomobile\forms.py:34
+msgid "Participant"
+msgstr "Partecipante"
+
+#: .\coderdojomobile\forms.py:43
+msgid "Check in"
+msgstr "Check in"
+
+#: .\coderdojomobile\forms.py:44
+msgid "Cancel check in"
+msgstr "Annulla Check in"
+
+#: .\coderdojomobile\forms.py:46
+msgid "Check_in_or_cancel"
+msgstr "Check in / annulla"
+
+#: .\coderdojomobile\templates\coderdojomobile\base.html:52
+#: .\coderdojomobile\templates\coderdojomobile\index.html:24
+msgid "Guides"
+msgstr "Guide"
+
+#: .\coderdojomobile\templates\coderdojomobile\base.html:55
+#: .\coderdojomobile\templates\coderdojomobile\index.html:31
+msgid "Tools"
+msgstr "Programmi"
+
+#: .\coderdojomobile\templates\coderdojomobile\base.html:58
+#: .\coderdojomobile\templates\coderdojomobile\index.html:38
+msgid "Sprites"
+msgstr "Sprites"
+
+#: .\coderdojomobile\templates\coderdojomobile\base.html:61
+#: .\coderdojomobile\templates\coderdojomobile\events.html:6
+#: .\coderdojomobile\templates\coderdojomobile\events.html:23
+msgid "Events"
+msgstr "Eventi"
+
+#: .\coderdojomobile\templates\coderdojomobile\base.html:70
+#, python-format
+msgid "Hello, %(logged_user)s!"
+msgstr "Benvenuto, %(logged_user)s!"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:6
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:6
+#, fuzzy
+#| msgid "Events"
+msgid "Event"
+msgstr "Eventi"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:26
+#, python-format
+msgid "Check in %(participant)s!"
+msgstr "%(participant)s ha fatto check in"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:28
+#, python-format
+msgid "Cancel Check in %(participant)s!"
+msgstr "Check in annullato per %(participant)s"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:31
+msgid "Back to the event"
+msgstr "Torna all'evento"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:56
+msgid "Event_not_found"
+msgstr "Evento non trovato"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:21
+msgid "total_participants"
+msgstr "Totale Partecipanti"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:24
+msgid "still_missing"
+msgstr "Ne mancano ancora"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:31
+msgid "participant_list"
+msgstr "Lista Partecipanti"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:47
+msgid "Confirm"
+msgstr "Conferma"
+
+#: .\coderdojomobile\templates\coderdojomobile\events.html:31
+msgid "event_date"
+msgstr "del"
+
+#: .\coderdojomobile\templates\coderdojomobile\index.html:13
+msgid "welcome_sentence"
+msgstr "Ciao, Ninja!"
+
+#: .\coderdojomobile\templates\coderdojomobile\index.html:14
+msgid "welcome_banner"
+msgstr ""
+"Questo è il sito \"portatile\" del CoderDojo. Si trova proprio lì, dentro "
+"quella scatoletta che si chiama Raspberry Pi. In questo sito puoi trovare "
+"materiale utile per il CoderDojo"
+
+#: .\coderdojomobile\templates\coderdojomobile\index.html:25
+msgid "Guides_Long"
+msgstr ""
+"Guide, Tutorial, Sushi Card e altro. Insomma, tanto materiale che spiega "
+"come creare giochi e altro"
+
+#: .\coderdojomobile\templates\coderdojomobile\index.html:32
+msgid "Tools_Long"
+msgstr "Programmi per creare giochi e immagini"
+
+#: .\coderdojomobile\templates\coderdojomobile\index.html:39
+msgid "Sprites_Long"
+msgstr "Tante immagini per creare i tuoi giochi"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
+msgid "Tutorials"
+msgstr "Tutorial"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
+msgid "search"
+msgstr "Cerca"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
+msgid "Upload"
+msgstr "Carica"

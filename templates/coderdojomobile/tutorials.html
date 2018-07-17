@@ -1,0 +1,81 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+{% load i18n %}
+{% block title %}Tutorial{% endblock %}
+
+{% block page_styles %}
+<style>
+
+	div.tutorial    {  padding:10px; }
+
+	div.description    { padding-left:10px; display: inline-block; }
+	sprite img {margin:10px;}
+</style>
+{% endblock page_styles%}
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>{% trans "Tutorials" %}</h1>
+	</div>
+
+        <form action="{% url 'coderdojomobile:tutorials' topic_id %}" method="get"  >
+        {% csrf_token %}
+        {% bootstrap_form search_form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "search" %}
+            </button>
+        {% endbuttons %}
+ 
+        </form>
+
+			{% if projects %}
+				{% for project in projects %}
+	<a href="{% url 'coderdojomobile:tutorial' project.id %}">
+		<div class="row tutorial">
+			<div class="col-md-4">
+                {# We are serving from media files, so we use the url property of the file #}
+				<img src="{{project.screenshot.file.url }}" class="img-responsive center-block" style="width: 100% \9;" alt="{{category.category_name}}" />
+			</div>
+			<div class="col-md-8">
+                {% with project.level|stringformat:"s" as level_string %} {# need to format this as string otherwise concat fails#}
+                    {% with 'toolbox/images/level_'|add:level_string|add:'.svg' as image_static %}
+                        <h2 class="text-left"><img src="{% static image_static %}" alt="{{project.level}}"/> {{project.title}}</h2>
+                    {% endwith %}
+                {% endwith %}
+				<p class="text-left" >{{project.description}}</p>
+
+			</div>
+		</div>
+	</a>
+				{% endfor %}
+
+			{% else %}
+	<p>Nessun Tutorial Disponibile</p>
+			{% endif %}
+
+<p>Upload a Tutorial</p>
+
+
+    
+    
+
+    <form action="{% url 'coderdojomobile:tutorials' 1 %}" method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Upload" %}
+            </button>
+        {% endbuttons %}
+ 
+    </form>
+</div>
+
+
+{% endblock content %}
