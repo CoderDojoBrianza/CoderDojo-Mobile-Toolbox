@@ -15,7 +15,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Autore',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('nome', models.CharField(max_length=49)),
                 ('cognome', models.CharField(max_length=49)),
             ],
@@ -26,7 +32,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='LearningMaterial',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.CharField(max_length=1500)),
             ],
@@ -34,7 +46,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Genere',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('descrizione', models.CharField(max_length=31)),
             ],
             options={
@@ -44,7 +62,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GenericUserFile',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.CharField(max_length=1500)),
                 ('file_path', models.CharField(max_length=200)),
@@ -53,7 +77,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Liberatoria',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('nome', models.CharField(max_length=30)),
                 ('cognome', models.CharField(default='', max_length=30)),
                 ('consegnata', models.BooleanField()),
@@ -66,12 +96,36 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Libro',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('titolo', models.CharField(max_length=100)),
-                ('livello', models.CharField(choices=[('L1', 'Livello 1'), ('L2', 'Livello 2'), ('L3', 'Livello 3')], default='L1', max_length=2)),
-                ('posizione', models.CharField(default='null', max_length=200)),
-                ('autore', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coderdojomobile.Autore')),
-                ('genere', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coderdojomobile.Genere')),
+                ('livello',
+                 models.CharField(
+                     choices=[
+                         ('L1', 'Livello 1'),
+                         ('L2', 'Livello 2'),
+                         ('L3', 'Livello 3')
+                         ],
+                     default='L1',
+                     max_length=2)
+                 ),
+                ('posizione',
+                 models.CharField(default='null', max_length=200)),
+                ('autore',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to='coderdojomobile.Autore')
+                 ),
+                ('genere',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to='coderdojomobile.Genere')
+                 ),
             ],
             options={
                 'verbose_name_plural': 'Libri',
@@ -80,42 +134,79 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Sprite',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('sprite_name', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='SpriteCategory',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('sprite_category_name', models.CharField(max_length=200)),
-                ('sprite_category_description', models.CharField(max_length=500)),
+                ('sprite_category_description',
+                 models.CharField(max_length=500)),
                 ('category_image', models.CharField(max_length=500)),
-                ('sprite', models.ManyToManyField(to='coderdojomobile.Sprite')),
+                ('sprite',
+                 models.ManyToManyField(to='coderdojomobile.Sprite')),
             ],
         ),
         migrations.CreateModel(
             name='SpriteImages',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')
+                 ),
                 ('image_order', models.IntegerField()),
                 ('image_file', models.CharField(max_length=200)),
-                ('sprite', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coderdojomobile.Sprite')),
+                ('sprite',
+                 models.ForeignKey(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to='coderdojomobile.Sprite')
+                 ),
             ],
         ),
         migrations.AddField(
             model_name='learningmaterial',
             name='resources',
-            field=models.ManyToManyField(related_name='_learningmaterial_resources_+', to='coderdojomobile.GenericUserFile'),
+            field=models.ManyToManyField(
+                related_name='_learningmaterial_resources_+',
+                to='coderdojomobile.GenericUserFile'
+            ),
         ),
         migrations.AddField(
             model_name='learningmaterial',
             name='screenshot',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='+', to='coderdojomobile.GenericUserFile'),
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name='+',
+                to='coderdojomobile.GenericUserFile'
+            ),
         ),
         migrations.AddField(
             model_name='learningmaterial',
             name='tutorial',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='+', to='coderdojomobile.GenericUserFile'),
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='+',
+                to='coderdojomobile.GenericUserFile'
+            ),
         ),
     ]
