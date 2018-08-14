@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-import models
+from . import models
 
 
 class LibroOption(admin.ModelAdmin):
@@ -14,8 +14,8 @@ class LiberatoriaOption(admin.ModelAdmin):
 
 admin.site.register(models.Genere)
 admin.site.register(models.Autore)
-admin.site.register(models.Libro, models.LibroOption)
-admin.site.register(models.Liberatoria, models.LiberatoriaOption)
+admin.site.register(models.Libro, LibroOption)
+admin.site.register(models.Liberatoria, LiberatoriaOption)
 
 admin.site.register(models.Sprite)
 

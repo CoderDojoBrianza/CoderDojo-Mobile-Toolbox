@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.core.files import File
 # from django.core.files.base import ContentFile
 # from django.core.files.storage import default_storage
-import models
+from . import models
 # import os
 # import unicodedata
 import zipfile
