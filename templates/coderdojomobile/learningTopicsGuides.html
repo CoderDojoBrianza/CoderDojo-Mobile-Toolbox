@@ -1,0 +1,33 @@
+
+{% extends "coderdojomobile/learningTopicsBase.html" %}
+
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>Argomenti</h1>
+	</div>
+
+<div class="row">
+            {% if learning_topics %}
+            {% for topic in learning_topics %}
+        <div class="col-md-4">
+            <a href="{% url 'coderdojomobile:tutorials' topic.id %}">
+				<img src="{{topic.screenshot.url }}" class="img-responsive center-block" style="width: 100% \9;" alt="{{topic.title}}">
+				<h2 class="text-center">{{topic.title}}</h2>
+				<p class="text-center" >{{topic.description}}</p>
+			</a>
+		</div>
+
+				{% endfor %}
+</div>
+			{% else %}
+	<p>Nessun argomento Disponibile</p>
+			{% endif %}
+
+</div>
+
+
+{% endblock content %}

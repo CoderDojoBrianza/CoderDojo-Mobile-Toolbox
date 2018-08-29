@@ -66,7 +66,23 @@ class CheckInOutForm(forms.Form):
     )
     check_in_out = forms.ChoiceField(
         label=_('Check_in_or_cancel'),
-        choices=CHECK_CHOICES,
-        widget=forms.RadioSelect,
-        initial=CHECK_IN
+        choices=CHECK_CHOICES, widget=forms.RadioSelect, initial=CHECK_IN
+    )
+
+
+class RatingForm(forms.Form):
+    # Here value is an integer by design
+    value = forms.IntegerField(label=_('Rating'), min_value=1, max_value=5)
+    rating_author = forms.CharField(
+        label=_('Rating_Author'),
+        required=False,
+        max_length=150,
+        strip=True
+    )
+    comment = forms.CharField(
+        label=_('Rating_Comment'),
+        max_length=1500,
+        required=False,
+        strip=True,
+        widget=forms.Textarea
     )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-17 21:35+0200\n"
+"POT-Creation-Date: 2018-08-18 21:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,6 +62,18 @@ msgstr ""
 msgid "Check_in_or_cancel"
 msgstr "Check in or cancel"
 
+#: .\coderdojomobile\forms.py:51
+msgid "Rating"
+msgstr ""
+
+#: .\coderdojomobile\forms.py:52
+msgid "Rating_Author"
+msgstr "Your Name"
+
+#: .\coderdojomobile\forms.py:53
+msgid "Rating_Comment"
+msgstr "Comment"
+
 #: .\coderdojomobile\templates\coderdojomobile\base.html:52
 #: .\coderdojomobile\templates\coderdojomobile\index.html:24
 msgid "Guides"
@@ -108,7 +120,7 @@ msgid "Back to the event"
 msgstr ""
 
 #: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:36
-#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:61
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:65
 msgid "Event_not_found"
 msgstr "Event not found"
 
@@ -124,7 +136,7 @@ msgstr "Still missing"
 msgid "participant_list"
 msgstr "Participant List"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:52
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:56
 msgid "Confirm"
 msgstr ""
 
@@ -156,18 +168,74 @@ msgstr "Software tools to create games and resources for games"
 msgid "Sprites_Long"
 msgstr "Lots of images you can use in your games!"
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:15
-#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:26
+#: .\coderdojomobile\templates\coderdojomobile\learningTopicsSoftware.html:27
+msgid "No_Topic_Available"
+msgstr "No Topic Available"
+
+#: .\coderdojomobile\templates\coderdojomobile\rating_error.html:5
+msgid "rating_error_title"
+msgstr "Rating failed"
+
+#: .\coderdojomobile\templates\coderdojomobile\rating_error.html:22
+msgid "rating_error_message"
+msgstr "Rating failed, please fill the form correctly"
+
+#: .\coderdojomobile\templates\coderdojomobile\softwareDojo.html:14
+msgid "Software"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\softwareDojo.html:24
+msgid "No_Software_Available"
+msgstr "No Software Available"
+
+#: .\coderdojomobile\templates\coderdojomobile\thanks_rating.html:5
+msgid "thanks"
+msgstr "Thanks"
+
+#: .\coderdojomobile\templates\coderdojomobile\thanks_rating.html:22
+msgid "thanks_rating"
+msgstr "Thanks for rating!"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:19
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:30
 msgid "tutorial"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:31
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:35
 msgid "Resources"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:39
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:43
 msgid "tutorial_not_found"
 msgstr "Tutorial not found"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:52
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:74
+msgid "Rate"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:61
+msgid "ratings"
+msgstr "Thanks for rating!"
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:68
+#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:49
+msgid "rating"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:78
+#, python-format
+msgid "Rating left by %(author)s on %(rating_date)s"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:80
+#, python-format
+msgid "Rating left on %(rating_date)s"
+msgstr ""
+
+#: .\coderdojomobile\templates\coderdojomobile\tutorial.html:86
+msgid "no_comments"
+msgstr "No ratings"
 
 #: .\coderdojomobile\templates\coderdojomobile\tutorials.html:23
 msgid "Tutorials"
@@ -176,7 +244,3 @@ msgstr ""
 #: .\coderdojomobile\templates\coderdojomobile\tutorials.html:31
 msgid "search"
 msgstr "Search"
-
-#: .\coderdojomobile\templates\coderdojomobile\tutorials.html:73
-msgid "Upload"
-msgstr ""

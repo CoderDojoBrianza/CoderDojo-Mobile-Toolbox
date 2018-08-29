@@ -1,15 +1,12 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
-# from django.http import HttpResponse
-# from django.template import loader
-from .forms import TutorialUploadForm, LevelSelectionForm
+from .forms import TutorialUploadForm, LevelSelectionForm, RatingForm
 from django.http import HttpResponseRedirect
 from django.core.files import File
-# from django.core.files.base import ContentFile
-# from django.core.files.storage import default_storage
+from django.db.models import Avg
+from django.utils import formats
+from django.urls import reverse_lazy  # https://bit.ly/2BrhAZU
+import datetime
 from . import models
-# import os
-# import unicodedata
 import zipfile
 from . views import base_function
 
@@ -22,6 +19,16 @@ def thanks(request):
         'tutorial_resources': "resources.zip"
     })
     return render(request, "coderdojomobile/thanks_tutorial.html", context)
+
+
+def thanks_rating(request):
+    context = base_function(request)
+    return render(request, "coderdojomobile/thanks_rating.html", context)
+
+
+def rating_error(request):
+    context = base_function(request)
+    return render(request, "coderdojomobile/rating_error.html", context)
 
 
 def handle_uploaded_file(uploaded, description):
@@ -106,25 +113,27 @@ def tutorials(request, topic_id, material_level=None):
     else:
         # but still we have to filter checking whether a specific level was
         # requested by url or by form
+        # Average rating is retrieved using Django powerful model query api
         try:
             # read from form get
             requested_material_level = request.GET['level']
         except KeyError:
             requested_material_level = None
-        if (
-                (requested_material_level is None) or
-                (requested_material_level == LevelSelectionForm.LEVEL_ALL)
-        ):
-            projects = models.LearningMaterial.objects.all().filter(
-                topic_id=topic_id,
-                is_active=True
-            ).order_by('level', 'title')
+        if requested_material_level is None \
+           or requested_material_level == LevelSelectionForm.LEVEL_ALL:
+            projects = models.LearningMaterial.objects.all() \
+                .filter(topic_id=topic_id, is_active=True) \
+                .order_by('level', 'title') \
+                .annotate(avg_rating=Avg('rating__value'))
         else:
-            projects = models.LearningMaterial.objects.all().filter(
-                topic_id=topic_id,
-                is_active=True,
-                level=requested_material_level
-            ).order_by('level', 'title')
+            projects = models.LearningMaterial.objects.all() \
+                .filter(
+                    topic_id=topic_id,
+                    is_active=True,
+                    level=requested_material_level
+                    ) \
+                .order_by('level', 'title') \
+                .annotate(avg_rating=Avg('rating__value'))
         form = TutorialUploadForm()
         search_form = LevelSelectionForm()
         context.update({'projects': projects,
@@ -134,9 +143,82 @@ def tutorials(request, topic_id, material_level=None):
         return render(request, 'coderdojomobile/tutorials.html', context)
 
 
+def handle_learning_material_rating(request, tutorial):
+    # create a form instance and populate it with data from the request:
+    form = RatingForm(request.POST)
+    # check whether it's valid:
+    if form.is_valid():
+        rating = get_existing_rating_for_today(request, tutorial)
+        if rating:
+            rating.value = form.cleaned_data['value']
+            rating.comment = form.cleaned_data['comment']
+            rating.rating_author = form.cleaned_data['rating_author']
+        else:
+            rating = models.Rating()
+            rating.value = form.cleaned_data['value']
+            rating.comment = form.cleaned_data['comment']
+            rating.material = tutorial
+            rating.rating_date = datetime.date.today()
+            rating.rating_source = request.META['REMOTE_ADDR']
+            rating.rating_author = form.cleaned_data['rating_author']
+        rating.save()
+        return HttpResponseRedirect(
+                                   reverse_lazy(
+                                               'coderdojomobile:rating_thanks'
+                                               )
+                                   )
+    else:
+        return HttpResponseRedirect(
+                                   reverse_lazy(
+                                               'coderdojomobile:rating_error'
+                                               )
+                                   )
+
+
+def get_existing_rating_for_today(request, tutorial):
+    address = request.META['REMOTE_ADDR']
+    current_date = datetime.date.today()
+    existing_rating = None
+    try:
+        existing_rating = models.Rating. \
+            objects.get(
+                       material_id=tutorial.id,
+                       rating_date=current_date,
+                       rating_source=address
+                       )
+    except models.Rating.DoesNotExist:
+        existing_rating = None
+    return existing_rating
+
+
+def load_rating_form(request, tutorial):
+    form = RatingForm()
+    existing_rating = get_existing_rating_for_today(request, tutorial)
+    if existing_rating:
+        data = {
+               'value': existing_rating.value,
+               'comment': existing_rating.comment,
+               'rating_author': existing_rating.rating_author
+               }
+        form = RatingForm(data)  # Form is bound with pre-existing data
+    else:
+        form = RatingForm()
+    return form
+
+
 def tutorial(request, tutorial_id):
     context = base_function(request)
     tutorial = models.LearningMaterial.objects.get(id=tutorial_id)
-    context.update({'project': tutorial,
-                    'project_resources': tutorial.resources.all()})
+    form = load_rating_form(request, tutorial)
+    ratings = models.Rating.objects.all().filter(material_id=tutorial_id)
+    context.update({'form': form})
+    for r in ratings:
+        r.date_formatted = formats.date_format(r.rating_date, 'DATE_FORMAT')
+    if request.method == 'POST':
+        return handle_learning_material_rating(request, tutorial)
+    else:
+        context.update({
+                       'project': tutorial,
+                       'project_resources': tutorial.resources.all(),
+                       'ratings': ratings})
     return render(request, "coderdojomobile/tutorial.html", context)

@@ -75,11 +75,17 @@ class GenericUserFile(models.Model):
     title = models.CharField(max_length=200)
     file = models.FileField(max_length=200)
 
+    def __str__(self):
+        return self.title
+
 
 class LearningTopic(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=1500)
     screenshot = models.FileField(max_length=200, upload_to="learningtopic/")
+
+    def __str__(self):
+        return self.title
 
 
 class LearningMaterial(models.Model):
@@ -91,7 +97,11 @@ class LearningMaterial(models.Model):
         related_name='+',
         null=True
     )
-    resources = models.ManyToManyField(GenericUserFile, related_name='+')
+    resources = models.ManyToManyField(
+        GenericUserFile,
+        related_name='+',
+        null=True
+    )
     screenshot = models.OneToOneField(
         GenericUserFile,
         on_delete=models.DO_NOTHING,
@@ -106,11 +116,25 @@ class LearningMaterial(models.Model):
     is_active = models.BooleanField(default=True)
     level = models.IntegerField()
 
+    def __str__(self):
+        return self.title
+
+
+class Badge(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=1500)
+    image = models.FileField(max_length=200)
+    requisites = models.CharField(max_length=3000)
+
+    def __str__(self):
+        return self.title
+
 
 class Participant(models.Model):
     name = models.CharField(max_length=200)
     surname = models.CharField(max_length=200)
     uuid = models.CharField(max_length=200)
+    badges = models.ManyToManyField(Badge, related_name='+', null=True)
 
     def __str__(self):
         return self.name + " " + self.surname + "(" + self.uuid + ")"
@@ -137,3 +161,51 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.participant.__str__() + " at " + self.event.__str__()
+
+
+class Rating(models.Model):
+    material = models.ForeignKey(LearningMaterial, on_delete=models.DO_NOTHING)
+    value = models.DecimalField(max_digits=3, decimal_places=2)
+    rating_date = models.DateField()
+    # Max length of IPv6 addr https://bit.ly/2L5VjQA
+    rating_source = models.CharField(max_length=45)
+    rating_author = models.CharField(max_length=150, null=True, blank=True)
+    comment = models.CharField(max_length=1500, null=True, blank=True)
+
+    def __str__(self):
+        return "Rating " + str(self.value) + " for "
+        + self.material.__str__() + " on " + self.rating_date.__str__()
+        + (" by " + self.comment if self.comment is not None else "")
+
+
+# For software tools
+class OperatingSystem(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=1500)
+
+    def __str__(self):
+        return self.title
+
+
+class SoftwareTool(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=1500)
+    operating_systems = models.ManyToManyField(
+        OperatingSystem,
+        related_name='+'
+    )
+    executable = models.OneToOneField(
+        GenericUserFile,
+        on_delete=models.CASCADE,
+        related_name='+',
+        null=True
+    )
+    topic = models.ForeignKey(
+        LearningTopic,
+        on_delete=models.DO_NOTHING,
+        null=True
+    )
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title

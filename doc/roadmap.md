@@ -1,6 +1,5 @@
 # Development roadmap
 
-- Tutorial uploading
 - Authentication
 - i18n
 - Learning material improvements:    
@@ -15,3 +14,16 @@
     - (optional) Event creation
     - (optional) Participant list upload
 	- Ninja Checkin
+- Learning Material rating
+    - Datamodel
+    - Showing average rate (number) in learning material list
+    - Save rating in detailed view
+    - Show rating and comments from the detailed learning material
+    - Manage editing vs new comments
+- Badges
+    - Datamodel
+    - Show badges in event list
+    - Show number of previous participations in event list
+- Learning Material rating (advanced)
+    - Show rating with stars and half stars
+    - Allow setting numerical rating by clicking stars

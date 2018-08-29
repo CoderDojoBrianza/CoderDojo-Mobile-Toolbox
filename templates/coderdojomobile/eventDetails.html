@@ -36,7 +36,11 @@
             <h2 class="text-left" >{% trans "participant_list" %}</h2>
             <ul>
                     {% for ticket in tickets %}
-                <li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}</li>
+                <li>{% if ticket.has_checked_in %}<span style="color:green">{% bootstrap_icon "ok-circle" %}</span>{% else %}<span style="color:gray">{% bootstrap_icon "time" %}</span>{% endif %} {{ticket.participant.name}} {{ticket.participant.surname}}
+                {% for badge in ticket.badges %}
+                <img src="{{badge.image.url}}" alt="{{badge.title}}" height="20" />
+                {% endfor %}
+                </li>
                     {% endfor %}
             </ul>
         </div>

@@ -1,9 +1,13 @@
 
 {% extends "coderdojomobile/base.html" %}
 {% load static %}
+{% load bootstrap3 %}
 {% block title %}Tutorial{% endblock %}
 {% load i18n %}
 {% block page_styles %}
+<style>
+    div.user-rating { margin-bottom:10px; font-style:italic; }
+</style>
 {% endblock page_styles%}
 
 {% block content %}
@@ -11,33 +15,76 @@
 
 
 <div class="container">
-	<div class="page-header">
-		<h1>{% trans 'tutorial'%}</h1>
-	</div>
-			{% if project %}
+    <div class="page-header">
+        <h1>{% trans 'tutorial'%}</h1>
+    </div>
+            {% if project %}
 
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="text-center">{{project.title}}</h2>
-			<img src="{{project.screenshot.file.url }}" class="img-responsive center-block" style="width:400px" alt="{{category.category_name}}" />
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">{{project.title}}</h2>
+            <img src="{{project.screenshot.file.url }}" class="img-responsive center-block" style="width:400px" alt="{{category.category_name}}" />
 
-			<p class="text-center" >{{project.description}}</p>
+            <p class="text-center" >{{project.description}}</p>
             {% if perms.change_learningmaterial %} {#Only users with the appropriate permission can see the tutorial #}
-			<h2 class="text-left" ><a href="{{project.tutorial.file.url }}">{% trans 'tutorial'%}</a></h2>
+            <h2 class="text-left" ><a href="{{project.tutorial.file.url }}">{% trans 'tutorial'%}</a></h2>
             {% endif %}
-		</a>
+        </a>
 
 
-		<h2 class="text-left" >{% trans 'Resources'%}</h2>
+        <h2 class="text-left" >{% trans 'Resources'%}</h2>
 <ul>
-				{% for project_resource in project_resources %}
-		<li><a href="{{project_resource.file.url }}">{{project_resource.title}}</a></li>
-				{% endfor %}
+                {% for project_resource in project_resources %}
+        <li><a href="{{project_resource.file.url }}">{{project_resource.title}}</a></li>
+                {% endfor %}
 </ul>
-	</div>
-			{% else %}
-	<p>{% trans 'tutorial_not_found' %}</p>
-			{% endif %}
+    </div>
+            {% else %}
+    <p>{% trans 'tutorial_not_found' %}</p>
+            {% endif %}
+
+
+    <form action="{% url 'coderdojomobile:tutorial' project.id %}" method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% trans "Rate" %}
+            </button>
+        {% endbuttons %}
+ 
+    </form>
+
+<!-- Comments -->
+
+    <div class="page-header">
+        <h1>{% trans 'ratings'%}</h1>
+    </div>
+
+{% if ratings %}
+    {% for rating in ratings %}
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="text-left">{% trans "rating" %}: {{rating.value}}</h2>
+            </div>
+        </div>
+        {% if rating.comment %}
+        <div class="row">
+            <div class="col-md-8 user-rating">{{rating.comment}}</div>
+        </div>
+        {% endif %}
+            <div class="row">
+                {% if rating.rating_author %}
+                <div class="col-md-8">{% blocktrans with rating_date=rating.date_formatted|title author=rating.rating_author|title %}Rating left by {{author}} on {{rating_date}}{% endblocktrans %}</div>
+                {% else %}
+                <div class="col-md-8">{% blocktrans with rating_date=rating.date_formatted %}Rating left on {{rating_date}}{% endblocktrans %}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+{% else %}
+    <p>{% trans 'no_comments'%}</p>
+{% endif %}
 
 </div>
 

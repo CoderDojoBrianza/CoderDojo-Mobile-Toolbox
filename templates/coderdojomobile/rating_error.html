@@ -1,0 +1,29 @@
+
+{% extends "coderdojomobile/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'rating_error_title' %}{% endblock %}
+
+{% block page_styles %}
+<style>
+@media (min-width: 992px) {
+  .col-md-4:nth-child(3n+1) {
+    clear: left;
+  }
+}
+</style>
+{% endblock page_styles %}
+{% block content %}
+
+
+
+<div class="container">
+	<div class="page-header">
+		<h1>{% trans 'rating_error_message' %}</h1>
+	</div>
+
+
+</div>
+
+
+{% endblock content %}

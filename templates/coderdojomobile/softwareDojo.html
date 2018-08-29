@@ -4,35 +4,29 @@
 {% load static %}
 
 {% block title %}Software per CoderDojo{% endblock %}
-
+{% load i18n %}
 {% block content %}
 
 
+
 <div class="container">
-<h1>Software disponibile</h1>
-<br><br>
+	<div class="page-header">
+		<h1>{% trans "Software" %}</h1>
+	</div>
 
-<h3> Windows </h3>
-<ul>
-	<li><a href="{% static 'toolbox/softwareDojo/Installer Scratch/Windows/AdobeAIRInstaller.exe'%}"> AdobeAir</a></li>
-	<li><a href="{% static 'toolbox/softwareDojo/Installer Scratch/Windows/Scratch-454.exe'%}"> Scratch 2</a></li>
-	<li><a href="{% static 'toolbox/softwareDojo/inkscape-0.92.3-x64.msi'%}">Inkscape</a></li>
-	<li><a href="{% static 'toolbox/softwareDojo/arduino-1.8.5-windows.exe'%}"> Arduino-1.8.5-windows</a></li>
-	<li><a href="{% static 'toolbox/softwareDojo/VNC-Viewer-6.17.1113-Windows.exe'%}"> VNC Viewer</a></li>
-	
-</ul>
+			{% if sw_by_os %}
+            <ul>
+				{% for os_title,sw_for_that_os in sw_by_os.items %}
+                <h3> {{os_title}} </h3>
+                <ul>
+                    {% for sw in sw_for_that_os %}
+                    <li><a href="{{sw.executable.file.url}}">{{sw.title}}</a>
+                    {% endfor %}
+                </ul>
+				{% endfor %}
+            </ul>
+			{% else %}
+	<p>{% trans "No_Software_Available" %}</p>
+			{% endif %}
 
-<h3> Mac Os X</h3>
-<ul>
-	<li><a href="{% static 'toolbox/softwareDojo/Installer Scratch/Mac OS X/AIR/AdobeAIR.dmg'%}">AdobeAir</a></li>
-	<li><a href="{% static 'toolbox/softwareDojo/Installer Scratch/Mac OS X/Scratch-454.dmg'%}"> Scratch 2</a></li>
-</ul>
-
-<h3> Linux </h3>
-<ul>
-	<li><a href="{% static 'toolbox/softwareDojo/Installer Scratch/Linux/AdobeAIRInstaller.bin'%}"> AdobeAir</a></li>
-	<li><a href="{% static 'toolbox/softwareDojo/Installer Scratch/Linux/Scratch-454.air'%}"> Scratch 2</a></li>
-</ul>
-
-</div>
 {% endblock content %}
