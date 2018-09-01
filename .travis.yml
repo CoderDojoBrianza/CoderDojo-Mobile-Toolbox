@@ -7,4 +7,4 @@ install:
 before_script:
   - flake8 --version
 script:
-  - flake8 .
+  - flake8 . --exclude doc,migrations

@@ -21,14 +21,22 @@
         
         <p class="text-center" >{{event.description}}</p>
         
-        <p>
-        {% if ticket.has_checked_in %}
-            {% blocktrans with participant=ticket.participant %}Check in {{ participant }}!{% endblocktrans %} {# i18n with variables #}
-        {% else %}  
-            {% blocktrans with participant=ticket.participant %}Cancel Check in {{ participant }}!{% endblocktrans %} 
+        {% if ticket_found %}
+            <p>
+            {% if ticket.has_checked_in %}
+                {% blocktrans with participant=ticket.participant %}Check in {{ participant }}!{% endblocktrans %} {# i18n with variables #}
+                {% if waiver_is_valid %}
+                {% else %}
+                <p style="color:red;"> {% trans "waiver_invalid_or_expired" %} </p>
+                {% endif %}
+            {% else %}  
+                {% blocktrans with participant=ticket.participant %}Cancel Check in {{ participant }}!{% endblocktrans %} 
+            {% endif %}
+            </p>
+        {% else %}
+        <p style="color:red;">{% trans "ticket_not_found" %}</p>
         {% endif %}
-        </p>
-        <a href="{% url 'coderdojomobile:eventDetails' ticket.event.id %}"/>{% trans "Back to the event"%}</a>
+        <a href="{% url 'coderdojomobile:eventDetails' event.id %}" >{% trans "Back to the event"%}</a>
         
 
 	</div>

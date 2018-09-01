@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 21:15+0200\n"
+"POT-Creation-Date: 2018-08-31 06:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,61 +18,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\coderdojomobile\forms.py:16
+#: .\coderdojomobile\forms.py:23
 msgid "LEVEL_ALL"
 msgstr "Tutti"
 
-#: .\coderdojomobile\forms.py:17
+#: .\coderdojomobile\forms.py:24
 msgid "LEVEL_BEGINNER"
 msgstr "Principiante"
 
-#: .\coderdojomobile\forms.py:18
+#: .\coderdojomobile\forms.py:25
 msgid "LEVEL_INTERMEDIATE"
 msgstr "Intermedio"
 
-#: .\coderdojomobile\forms.py:19
+#: .\coderdojomobile\forms.py:26
 msgid "LEVEL_ADVANCED"
 msgstr "Avanzato"
 
-#: .\coderdojomobile\forms.py:21
+#: .\coderdojomobile\forms.py:28
 msgid "Level"
 msgstr "Livello"
 
-#: .\coderdojomobile\forms.py:32
+#: .\coderdojomobile\forms.py:42
 msgid "Participant_Id"
 msgstr "Id Partecipante"
 
-#: .\coderdojomobile\forms.py:33
+#: .\coderdojomobile\forms.py:47
 msgid "Ticket Id"
 msgstr "Id Biglietto"
 
-#: .\coderdojomobile\forms.py:34
+#: .\coderdojomobile\forms.py:52
 msgid "Participant"
 msgstr "Partecipante"
 
-#: .\coderdojomobile\forms.py:43
+#: .\coderdojomobile\forms.py:64
 msgid "Check in"
 msgstr "Check in"
 
-#: .\coderdojomobile\forms.py:44
+#: .\coderdojomobile\forms.py:65
 msgid "Cancel check in"
 msgstr "Annulla Check in"
 
-#: .\coderdojomobile\forms.py:46
+#: .\coderdojomobile\forms.py:68
 msgid "Check_in_or_cancel"
 msgstr "Check in / annulla"
 
-#: .\coderdojomobile\forms.py:51
+#: .\coderdojomobile\forms.py:75
 #, fuzzy
 #| msgid "rating"
 msgid "Rating"
 msgstr "Voto"
 
-#: .\coderdojomobile\forms.py:52
+#: .\coderdojomobile\forms.py:77
 msgid "Rating_Author"
 msgstr "Il tuo nome"
 
-#: .\coderdojomobile\forms.py:53
+#: .\coderdojomobile\forms.py:83
 msgid "Rating_Comment"
 msgstr "Commento"
 
@@ -109,21 +109,29 @@ msgstr "Benvenuto, %(logged_user)s!"
 msgid "Event"
 msgstr "Eventi"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:26
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:27
 #, python-format
 msgid "Check in %(participant)s!"
 msgstr "%(participant)s ha fatto check in"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:28
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:30
+msgid "waiver_invalid_or_expired"
+msgstr "Questo partecipante non ha una liberatoria valida!"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:33
 #, python-format
 msgid "Cancel Check in %(participant)s!"
 msgstr "Check in annullato per %(participant)s"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:31
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:37
+msgid "ticket_not_found"
+msgstr "Biglietto non trovato!"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:39
 msgid "Back to the event"
 msgstr "Torna all'evento"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:44
 #: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:65
 msgid "Event_not_found"
 msgstr "Evento non trovato"
@@ -189,7 +197,7 @@ msgstr "Valutazione non riuscita, please fill the form correctly"
 msgid "Software"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\softwareDojo.html:24
+#: .\coderdojomobile\templates\coderdojomobile\softwareDojo.html:29
 msgid "No_Software_Available"
 msgstr "Nessun Software Disponibile"
 

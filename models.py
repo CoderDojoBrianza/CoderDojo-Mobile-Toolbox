@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your models here.
@@ -39,6 +40,24 @@ class Libro(models.Model):
 
     def __str__(self):
         return self.titolo
+
+
+class Waiver(models.Model):
+    valid = models.BooleanField()
+    sign_date = models.DateField(null=True, blank=True)
+    expiry_date = models.DateField(null=True, blank=True)
+    allows_photos = models.BooleanField()
+    scanned_image = models.FileField(
+                                    max_length=200,
+                                    upload_to="waivers/",
+                                    null=True, blank=True
+                                    )
+
+    def __str__(self):
+        try:
+            return "%s %s" % (self.participant.name, self.participant.surname)
+        except ObjectDoesNotExist:
+            return "unbound"
 
 
 class Liberatoria(models.Model):
@@ -134,7 +153,18 @@ class Participant(models.Model):
     name = models.CharField(max_length=200)
     surname = models.CharField(max_length=200)
     uuid = models.CharField(max_length=200)
-    badges = models.ManyToManyField(Badge, related_name='+', null=True)
+    badges = models.ManyToManyField(
+                                   Badge,
+                                   related_name='+',
+                                   null=True,
+                                   blank=True
+                                   )
+    waiver = models.OneToOneField(
+                                 Waiver,
+                                 on_delete=models.DO_NOTHING,
+                                 null=True,
+                                 related_name="participant"
+                                 )
 
     def __str__(self):
         return self.name + " " + self.surname + "(" + self.uuid + ")"

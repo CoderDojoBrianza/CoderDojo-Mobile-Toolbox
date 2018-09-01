@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 21:15+0200\n"
+"POT-Creation-Date: 2018-08-31 06:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,59 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\coderdojomobile\forms.py:16
+#: .\coderdojomobile\forms.py:23
 msgid "LEVEL_ALL"
 msgstr "All"
 
-#: .\coderdojomobile\forms.py:17
+#: .\coderdojomobile\forms.py:24
 msgid "LEVEL_BEGINNER"
 msgstr "Beginner"
 
-#: .\coderdojomobile\forms.py:18
+#: .\coderdojomobile\forms.py:25
 msgid "LEVEL_INTERMEDIATE"
 msgstr "Intermediate"
 
-#: .\coderdojomobile\forms.py:19
+#: .\coderdojomobile\forms.py:26
 msgid "LEVEL_ADVANCED"
 msgstr "Advanced"
 
-#: .\coderdojomobile\forms.py:21
+#: .\coderdojomobile\forms.py:28
 msgid "Level"
 msgstr ""
 
-#: .\coderdojomobile\forms.py:32
+#: .\coderdojomobile\forms.py:42
 msgid "Participant_Id"
 msgstr "Participant Id"
 
-#: .\coderdojomobile\forms.py:33
+#: .\coderdojomobile\forms.py:47
 msgid "Ticket Id"
 msgstr ""
 
-#: .\coderdojomobile\forms.py:34
+#: .\coderdojomobile\forms.py:52
 msgid "Participant"
 msgstr ""
 
-#: .\coderdojomobile\forms.py:43
+#: .\coderdojomobile\forms.py:64
 msgid "Check in"
 msgstr ""
 
-#: .\coderdojomobile\forms.py:44
+#: .\coderdojomobile\forms.py:65
 msgid "Cancel check in"
 msgstr ""
 
-#: .\coderdojomobile\forms.py:46
+#: .\coderdojomobile\forms.py:68
 msgid "Check_in_or_cancel"
 msgstr "Check in or cancel"
 
-#: .\coderdojomobile\forms.py:51
+#: .\coderdojomobile\forms.py:75
 msgid "Rating"
 msgstr ""
 
-#: .\coderdojomobile\forms.py:52
+#: .\coderdojomobile\forms.py:77
 msgid "Rating_Author"
 msgstr "Your Name"
 
-#: .\coderdojomobile\forms.py:53
+#: .\coderdojomobile\forms.py:83
 msgid "Rating_Comment"
 msgstr "Comment"
 
@@ -105,21 +105,29 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:26
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:27
 #, python-format
 msgid "Check in %(participant)s!"
 msgstr "%(participant)s has checked in!"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:28
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:30
+msgid "waiver_invalid_or_expired"
+msgstr "This participant does not have a valid waiver!"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:33
 #, python-format
 msgid "Cancel Check in %(participant)s!"
 msgstr "Check in for %(participant)s canceled"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:31
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:37
+msgid "ticket_not_found"
+msgstr "Ticket not found!"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:39
 msgid "Back to the event"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:36
+#: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:44
 #: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:65
 msgid "Event_not_found"
 msgstr "Event not found"
@@ -184,7 +192,7 @@ msgstr "Rating failed, please fill the form correctly"
 msgid "Software"
 msgstr ""
 
-#: .\coderdojomobile\templates\coderdojomobile\softwareDojo.html:24
+#: .\coderdojomobile\templates\coderdojomobile\softwareDojo.html:29
 msgid "No_Software_Available"
 msgstr "No Software Available"
 
