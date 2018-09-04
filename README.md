@@ -19,7 +19,7 @@ Currently the application is in an early development stage, but it has already b
 
 ## Trying It
 
-Want to try it? Follow the [installation instructions](doc/installing.md) 
+Want to try it? Follow the [User Guide](https://coderdojo-mobile-toolbox.readthedocs.io/en/latest/) 
 
 ## Next features
 
