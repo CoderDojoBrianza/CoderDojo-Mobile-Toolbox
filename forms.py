@@ -86,3 +86,7 @@ class RatingForm(forms.Form):
         strip=True,
         widget=forms.Textarea
     )
+
+
+class TicketUploadForm(forms.Form):
+    ticket_file = forms.FileField(max_length=100)

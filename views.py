@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 # from django.template import loader
 # from .forms import TutorialUploadForm
 from .forms import CheckInOutForm
+from .forms import TicketUploadForm
 # from django.http import HttpResponseRedirect
 from . models import Event
 from . models import Ticket
@@ -22,6 +23,10 @@ from . models import SoftwareTool
 import os
 import unicodedata
 from django.contrib.auth.decorators import permission_required
+import csv
+import datetime
+from io import TextIOWrapper
+import random
 
 # https://docs.djangoproject.com/en/dev/ref/urlresolvers/#reverse-lazy
 from django.urls import reverse_lazy
@@ -364,12 +369,14 @@ def eventDetails(request, event_id):
                 for part_badge in participant.badges.all():
                     ticket.badges.append(part_badge)
     form = CheckInOutForm(queryset_for_form)
+    ticket_upload_form = TicketUploadForm()
     context.update({
         'event': event,
         'tickets': tickets,
         'form': form,
         'total_participants': total_participants,
-        'missing_participants': missing_participants
+        'missing_participants': missing_participants,
+        'ticket_upload_form': ticket_upload_form
     })
     return render(request, 'coderdojomobile/eventDetails.html', context)
 
@@ -448,6 +455,152 @@ def eventCheckInOut(request, event_id):
             'ticket_found': ticket_found
         })
         return render(request, 'coderdojomobile/eventCheckInOut.html', context)
+
+
+def generate_uuid():
+    now = datetime.datetime.now()
+    rand = random.randint(1, 999)
+    micro = now.strftime("%f").zfill(6)[3:6]
+    uuid = now.strftime("%M%S") + str(micro) + str(rand).zfill(3)
+    return uuid
+
+
+class TicketLoadingOutcome():
+    ok = 0
+    error = 1
+
+    def __init__(self, name, surname, ticket_id, badge_id, outcome):
+        self.name = name
+        self.surname = surname
+        self.ticket_id = ticket_id
+        self.badge_id = badge_id
+        self.outcome = outcome
+
+
+def import_ticket(ticket, event):
+    '''
+    if badge id is not null, it is used to identify the participant
+    otherwise, name and surname are used
+    if the badge id does not match an existing badge id, a new participant
+    is created. This is done to allow Ninjas to use the same badge in more
+    than one Dojo.
+    No check is performed on name - surname w.r.t badge id.
+    '''
+    name = ticket['Name']
+    surname = ticket['Surname']
+    ticket_id = ticket['Ticket_id']
+    badge_id = ticket['Badge_id']
+    participant = None
+    outcome = None
+    if badge_id is not None and len(badge_id) > 0:
+        # Look for the Participant
+        try:
+            participant = Participant.objects.get(uuid=badge_id)
+        except Participant.DoesNotExist:
+            pass
+    if badge_id is None and name is not None and surname is not None \
+            and len(name) and len(surname) > 0:
+        # Look for the Participant
+        try:
+            participant = Participant.objects.get(name=name, surname=surname)
+        except Participant.DoesNotExist:
+            pass
+        except Participant.MultipleObjectsReturned:
+            outcome = TicketLoadingOutcome(
+                                          name,
+                                          surname,
+                                          ticket_id,
+                                          badge_id,
+                                          TicketLoadingOutcome.error)
+    if participant is None and outcome is None:
+        # create
+        badge_id = generate_uuid()
+        participant = Participant.objects.create(
+                                                name=name,
+                                                surname=surname,
+                                                uuid=badge_id
+                                                )
+    if ticket_id is None or len(ticket_id) == 0 and outcome is None:
+        ticket_id = generate_uuid()
+    if outcome is None:
+        Ticket.objects.create(
+                             participant=participant,
+                             event=event,
+                             has_checked_in=False,
+                             uuid=ticket_id
+                             )
+        outcome = TicketLoadingOutcome(
+                                  name,
+                                  surname,
+                                  ticket_id,
+                                  badge_id,
+                                  TicketLoadingOutcome.ok)
+    return outcome
+
+
+def import_event_participants(external_ticket_list, event):
+    processed_tickets = []
+    for ticket in external_ticket_list:
+        processed_tickets.append(import_ticket(ticket, event))
+    return processed_tickets
+
+
+@permission_required(
+    'coderdojomobile.change_ticket',
+    login_url=reverse_lazy('coderdojomobile:login',
+                           current_app="coderdojomobile")
+)
+def event_ticket_upload(request, event_id):
+    context = base_function(request)
+    event = None
+    processed_tickets = []
+    if request.method == 'POST':  # TODO handle get
+        form = TicketUploadForm(request.POST, request.FILES)
+        '''
+        CSV format support 4 fields:
+        name, surname, ticket id (optional), badge id (optional)
+        '''
+        ticket_list = []
+        if form.is_valid():
+            try:
+                event = Event.objects.get(id=event_id)
+            except Event.DoesNotExist:
+                pass
+            if event is not None:
+                # Check which field is populated
+                try:
+                    # https://stackoverflow.com/a/16243182
+                    ticket_file = \
+                        TextIOWrapper(
+                                     request.FILES['ticket_file'].file,
+                                     encoding='utf-8'
+                                     )
+                    reader = csv.DictReader(
+                                           ticket_file,
+                                           fieldnames=[
+                                                      'Name',
+                                                      'Surname',
+                                                      'Ticket_id',
+                                                      'Badge_id'
+                                                      ]
+                                           )
+                    next(reader)  # skip first line
+                    for row in reader:
+                        ticket_list.append(row)
+                except csv.Error as e:
+                    print('line {}: {}'.format(reader.line_num, e))
+                processed_tickets = import_event_participants(
+                                                             ticket_list,
+                                                             event
+                                                             )
+        context.update({
+            'tickets': processed_tickets,
+            'event': event
+        })
+        return render(
+                     request,
+                     'coderdojomobile/eventTicketUpload.html',
+                     context)
 
 
 # -----------------------------------------------------------------------------

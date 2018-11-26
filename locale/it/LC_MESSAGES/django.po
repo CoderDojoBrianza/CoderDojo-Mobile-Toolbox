@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-31 06:22+0200\n"
+"POT-Creation-Date: 2018-09-05 21:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,7 @@ msgstr "Benvenuto, %(logged_user)s!"
 
 #: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:6
 #: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:6
+#: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:6
 #, fuzzy
 #| msgid "Events"
 msgid "Event"
@@ -115,6 +116,7 @@ msgid "Check in %(participant)s!"
 msgstr "%(participant)s ha fatto check in"
 
 #: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:30
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:43
 msgid "waiver_invalid_or_expired"
 msgstr "Questo partecipante non ha una liberatoria valida!"
 
@@ -128,11 +130,13 @@ msgid "ticket_not_found"
 msgstr "Biglietto non trovato!"
 
 #: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:39
+#: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:33
 msgid "Back to the event"
 msgstr "Torna all'evento"
 
 #: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:44
-#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:65
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:86
+#: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:37
 msgid "Event_not_found"
 msgstr "Evento non trovato"
 
@@ -148,9 +152,20 @@ msgstr "Ne mancano ancora"
 msgid "participant_list"
 msgstr "Lista Partecipanti"
 
-#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:56
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:63
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:77
 msgid "Confirm"
 msgstr "Conferma"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:26
+#, python-format
+msgid "Ticket_created %(name)s %(surname)s %(uuid)s "
+msgstr "Biglietto creato per %(name)s %(surname)s con id %(uuid)s"
+
+#: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:29
+#, python-format"
+msgid "Ticket_create_fail %(name)s %(surname)s %(uuid)s "
+msgstr "Biglietto non caricato per %(name)s %(surname)s con id %(uuid)s"
 
 #: .\coderdojomobile\templates\coderdojomobile\events.html:31
 msgid "event_date"

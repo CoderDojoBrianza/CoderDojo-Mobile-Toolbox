@@ -67,6 +67,20 @@
         </form>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+        <form action="{% url 'coderdojomobile:event_ticket_upload' event.id %}" method="POST"  enctype="multipart/form-data" >
+            {% csrf_token %}
+            {% bootstrap_form ticket_upload_form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                    {% trans "Confirm" %}
+            </button>
+            {% endbuttons %}
+
+        </form>
+        </div>
+    </div>
     {% endif %}
 			{% else %}
     <p>{% trans "Event_not_found" %}</p>

@@ -63,6 +63,11 @@ urlpatterns = [
         name='eventCheckInOut'
         ),
     path(
+        'eventDetails/ticket_upload/<int:event_id>',
+        views.event_ticket_upload,
+        name='event_ticket_upload'
+        ),
+    path(
         'login/',
         auth_views.LoginView.as_view(
                                     template_name='coderdojomobile/login.html'

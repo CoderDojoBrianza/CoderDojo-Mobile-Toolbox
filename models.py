@@ -163,7 +163,8 @@ class Participant(models.Model):
                                  Waiver,
                                  on_delete=models.DO_NOTHING,
                                  null=True,
-                                 related_name="participant"
+                                 related_name="participant",
+                                 blank=True
                                  )
 
     def __str__(self):
