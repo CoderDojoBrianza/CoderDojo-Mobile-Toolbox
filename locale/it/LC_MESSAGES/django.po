@@ -131,6 +131,7 @@ msgstr "Biglietto non trovato!"
 
 #: .\coderdojomobile\templates\coderdojomobile\eventCheckInOut.html:39
 #: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:33
+#: .\coderdojomobile\templates\coderdojomobile\eventTicketUpload.html:28
 msgid "Back to the event"
 msgstr "Torna all'evento"
 
@@ -154,6 +155,7 @@ msgstr "Lista Partecipanti"
 
 #: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:63
 #: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:77
+#: .\coderdojomobile\templates\coderdojomobile\eventDetails.html:70
 msgid "Confirm"
 msgstr "Conferma"
 

@@ -498,11 +498,14 @@ def import_ticket(ticket, event):
             participant = Participant.objects.get(uuid=badge_id)
         except Participant.DoesNotExist:
             pass
-    if badge_id is None and name is not None and surname is not None \
-            and len(name) and len(surname) > 0:
+    elif name is not None and surname is not None \
+            and len(name) > 0 and len(surname) > 0:
         # Look for the Participant
         try:
-            participant = Participant.objects.get(name=name, surname=surname)
+            participant = Participant.objects.get(
+                                                 name__iexact=name,
+                                                 surname__iexact=surname
+                                                 )
         except Participant.DoesNotExist:
             pass
         except Participant.MultipleObjectsReturned:
