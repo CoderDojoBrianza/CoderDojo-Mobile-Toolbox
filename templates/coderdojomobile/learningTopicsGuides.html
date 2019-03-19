@@ -13,14 +13,18 @@
 <div class="row">
             {% if learning_topics %}
             {% for topic in learning_topics %}
-        <div class="col-md-4">
-            <a href="{% url 'coderdojomobile:tutorials' topic.id %}">
-				<img src="{{topic.screenshot.url }}" class="img-responsive center-block" style="width: 100% \9;" alt="{{topic.title}}">
-				<h2 class="text-center">{{topic.title}}</h2>
-				<p class="text-center" >{{topic.description}}</p>
-			</a>
-		</div>
-
+            <div class="col-md-4">
+                <a href="{% url 'coderdojomobile:tutorials' topic.id %}">
+                    <img src="{{topic.screenshot.url }}" class="img-responsive center-block" style="width: 100% \9;" alt="{{topic.title}}">
+                    <h2 class="text-center">{{topic.title}}</h2>
+                    <p class="text-center" >{{topic.description}}</p>
+                </a>
+            </div>
+            {# https://medium.com/wdstack/varying-column-heights-in-bootstrap-4e8dd5338643 #}
+            {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                <!--clearfix medium every 3-->
+                <div class="clearfix visible-md visible-lg"></div>
+             {% endif %}
 				{% endfor %}
 </div>
 			{% else %}

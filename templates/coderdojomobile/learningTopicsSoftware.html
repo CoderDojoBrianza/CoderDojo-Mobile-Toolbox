@@ -4,7 +4,7 @@
 {% block content %}
 
 
-
+{# Applying clearfix fix  https://stackoverflow.com/questions/22310912/bootstrap-row-with-columns-of-different-height  https://www.bootply.com/89910 #}
 <div class="container">
 	<div class="page-header">
 		<h1>Argomenti</h1>
@@ -20,7 +20,11 @@
 				<p class="text-center" >{{topic.description}}</p>
 			</a>
 		</div>
-
+        {# https://medium.com/wdstack/varying-column-heights-in-bootstrap-4e8dd5338643 #}
+            {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                <!--clearfix medium every 3-->
+                <div class="clearfix visible-md visible-lg"></div>
+             {% endif %}
 				{% endfor %}
 </div>
 			{% else %}
